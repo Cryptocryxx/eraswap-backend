@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Weihnachtsmark",
+        "quantity": 1,
+        "description": "Chuffeur service und ein freies Heißgetränk deiner Wahl"
+    },
+    {
+        "name": "Rückenmassage",
+        "quantity": 3,
+        "description": "eine mindestens 10 minütige Pizza-beleg Session"
+    },
+    {
+        "name": "Backen",
+        "quantity": 2,
+        "description": "Überraschungsbacken du kommst und ich hab schon eingekauft und wir backen!"
+    },
+    {
+        "name": "kleines Date",
+        "quantity": 1,
+        "description": "ein low Budget date aber trotzem romantisch! (vergleichbar mit Monrepos spazieren gehen)"
+    },
+    {
+        "name": "mittleres Date",
+        "quantity": 1,
+        "description": "Ein schon cooles Date und mittel besonders (vergleichbar mit ins Kino gehen)"
+    },
+    {
+        "name": "großes Date",
+        "quantity": 1,
+        "description": "Ein sehr besonderes und ausgeklügeltes Date mit Anreise (vergleichbar mit Wakeboarden)"
+    },
+    {
+        "name": "die Aalen besuchs Karte",
+        "quantity": 1,
+        "description": "Du fühlst dich einsam in Aalen lös diese Karte ein und wenn ich nicht ein DRIFTIGEN Grund habe, bin ich in einer Stunde bei dir"
+    },
+    {
+        "name": "Bedien Service",
+        "quantity": 5,
+        "description": "Du brauchst irgendetwas und wir sind im selben Haus mit dieser Kugel bin ich gezwungen dir dein Wunsch zu erfüllen."
+    },
+    {
+        "name": "Fußmassage",
+        "quantity": 3,
+        "description": "Gratis Fußreflexzonentherapie gefällig"
+    }
+]

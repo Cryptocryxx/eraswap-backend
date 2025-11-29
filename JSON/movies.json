@@ -1,0 +1,560 @@
+[
+    {
+        "name": "Home Alone",
+        "image": "https://image.tmdb.org/t/p/w500/uuitWHpJwxD1wruFl2nZHIb4UGN.jpg",
+        "description": "Ein Junge wird versehentlich zu Hause zurückgelassen und verteidigt sein Haus gegen zwei trottelige Einbrecher.",
+        "rottenTomatoScore": 67,
+        "matched": [],
+        "trailer": "https://www.youtube.com/watch?v=g64dOUrwqrE",
+        "declined": []
+    },
+    {
+        "name": "Harry Potter and the Philosopher's Stone",
+        "image": "https://image.tmdb.org/t/p/w500/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg",
+        "description": "Ein Waisenjunge entdeckt an seinem 11. Geburtstag, dass er ein Zauberer ist, und besucht die Hogwarts-Schule für Hexerei und Zauberei.",
+        "rottenTomatoScore": 81,
+        "matched": [],
+        "trailer": "https://www.youtube.com/watch?v=l91Km49W9qI",
+        "declined": []
+    },
+    {
+        "name": "Harry Potter and the Chamber of Secrets",
+        "image": "https://image.tmdb.org/t/p/w500/sdEOH0992YZ0QSxgXNIGLq1ToUi.jpg",
+        "description": "In Hogwarts treibt ein mysteriöses Monster sein Unwesen, und Harry versucht, das Geheimnis der Kammer des Schreckens zu lüften.",
+        "rottenTomatoScore": 82,
+        "matched": [],
+        "trailer": "https://www.youtube.com/watch?v=nE11U5iBnH0",
+        "declined": []
+    },
+    {
+        "name": "Harry Potter and the Prisoner of Azkaban",
+        "image": "https://image.tmdb.org/t/p/w500/aWxwnYoe8p2d2fcxOqtvAtJ72Rw.jpg",
+        "description": "Ein gefährlicher Gefangener ist aus Askaban geflohen und jagt Harry Potter, der neue Wahrheiten über seine Vergangenheit entdeckt.",
+        "rottenTomatoScore": 90,
+        "matched": [],
+        "trailer": "https://www.youtube.com/watch?v=VwErvYgoH70",
+        "declined": []
+    },
+    {
+        "name": "Harry Potter and the Goblet of Fire",
+        "image": "https://image.tmdb.org/t/p/w500/fECBtHlr0RB3foNHDiCBXeg9Bv9.jpg",
+        "description": "Harry nimmt unerwartet am Trimagischen Turnier teil und muss sich lebensgefährlichen Herausforderungen stellen.",
+        "rottenTomatoScore": 88,
+        "matched": [],
+        "trailer": "https://www.youtube.com/watch?v=4xkFJgcCQRE",
+        "declined": []
+    },
+    {
+        "name": "Harry Potter and the Order of the Phoenix",
+        "image": "https://image.tmdb.org/t/p/w500/5aOyriWkPec0zUDxmHFP9qMmBaj.jpg",
+        "description": "Harry gründet eine geheime Gruppe, um Hogwarts-Schüler auf den Kampf gegen Voldemort vorzubereiten.",
+        "rottenTomatoScore": 77,
+        "matched": [],
+        "trailer": "https://www.youtube.com/watch?v=47PHbQTmw5g",
+        "declined": []
+    },
+    {
+        "name": "Harry Potter and the Half-Blood Prince",
+        "image": "https://image.tmdb.org/t/p/w500/z7uo9zmQdQwU5ZJHFpv2Upl30i1.jpg",
+        "description": "Dunkle Geheimnisse werden gelüftet, als Harry ein mysteriöses Buch des Halbblutprinzen findet.",
+        "rottenTomatoScore": 84,
+        "matched": [],
+        "trailer": "https://www.youtube.com/watch?v=DgeDDXcw--I",
+        "declined": []
+    },
+    {
+        "name": "Harry Potter and the Deathly Hallows Part 1",
+        "image": "https://image.tmdb.org/t/p/w500/iGoXIpQb7Pot00EEdwpwPajheZ5.jpg",
+        "description": "Harry, Ron und Hermine machen sich auf die Suche nach den Horkruxen, um Voldemort zu besiegen.",
+        "rottenTomatoScore": 77,
+        "matched": [],
+        "trailer": "https://www.youtube.com/watch?v=MxqsmsA8y5k",
+        "declined": []
+    },
+    {
+        "name": "Harry Potter and the Deathly Hallows Part 2",
+        "image": "https://image.tmdb.org/t/p/w500/c54HpQmuwXjHq2C9wmoACjxoom3.jpg",
+        "description": "Der letzte Kampf gegen Voldemort entscheidet über das Schicksal der Zaubererwelt.",
+        "rottenTomatoScore": 96,
+        "matched": [],
+        "trailer": "https://www.youtube.com/watch?v=5NYt1qirBWg",
+        "declined": []
+    },
+    {
+        "name": "Elf",
+        "image": "https://image.tmdb.org/t/p/w500/oOleziEempUPu96jkGs0Pj6tKxj.jpg",
+        "description": "Ein menschlicher Elf reist nach New York, um seinen leiblichen Vater zu finden und das Weihnachtsfest zu retten.",
+        "rottenTomatoScore": 85,
+        "matched": [],
+        "trailer": "https://www.youtube.com/watch?v=14o38xfHlXc",
+        "declined": []
+    },
+    {
+        "name": "The Polar Express",
+        "image": "https://image.tmdb.org/t/p/w500/eOoCzH0MqeGr2taUZO4SwG416PF.jpg",
+        "description": "Ein Junge begibt sich auf eine magische Zugreise zum Nordpol, um an den Geist von Weihnachten zu glauben.",
+        "rottenTomatoScore": 56,
+        "trailer": "https://www.youtube.com/watch?v=f0oyHtZiJJs",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Dashing Through the Snow",
+        "image": "https://image.tmdb.org/t/p/w500/AnfXxsoLBS6JDpu65vHsEvEcWSA.jpg",
+        "description": "Ein Vater und seine Tochter erleben ein magisches Weihnachtsabenteuer mit einem mysteriösen Mann, der behauptet, der Weihnachtsmann zu sein.",
+        "rottenTomatoScore": 40,
+        "trailer": "https://www.youtube.com/watch?v=DbOmSUSmISM",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Best. Christmas. Ever!",
+        "image": "https://image.tmdb.org/t/p/w500/yNPgjXeeb7vdNI7AQB5SWkkk6si.jpg",
+        "description": "Ein Weihnachtsbrief führt zu einer unerwarteten und chaotischen Wiedervereinigung zweier Freundinnen.",
+        "rottenTomatoScore": 45,
+        "trailer": "https://www.youtube.com/watch?v=2deV7cUtS0E",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "The Naughty Nine",
+        "image": "https://image.tmdb.org/t/p/w500/e0lSKnfAB0p2FJ5roEwjAyy0EA0.jpg",
+        "description": "Eine Gruppe von Kindern plant einen Raubüberfall am Nordpol, um ihre gestohlenen Geschenke zurückzuholen.",
+        "rottenTomatoScore": 60,
+        "trailer": "https://www.youtube.com/watch?v=LE4M6xQhBFA",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "A Christmas Carol",
+        "image": "https://image.tmdb.org/t/p/w500/xNwlAIdx1Ln28GRiQttUP9Gojy2.jpg",
+        "description": "Die klassische Geschichte von Ebenezer Scrooge, der an Heiligabend von Geistern heimgesucht wird.",
+        "rottenTomatoScore": 54,
+        "trailer": null,
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "It's a Wonderful Life",
+        "image": "https://image.tmdb.org/t/p/w500/bSqt9rhDZx1Q7UZ86dBPKdNomp2.jpg",
+        "description": "Ein verzweifelter Mann entdeckt den Wert seines Lebens durch die Hilfe eines Engels.",
+        "rottenTomatoScore": 94,
+        "trailer": "https://www.youtube.com/watch?v=iLR3gZrU2Xo",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "A Christmas Story Christmas",
+        "image": "https://image.tmdb.org/t/p/w500/bNsyhWBiuG0LbSh715YAUCLXZyi.jpg",
+        "description": "Ralphie kehrt als Erwachsener nach Hause zurück, um seinen Kindern ein perfektes Weihnachtsfest zu bereiten.",
+        "rottenTomatoScore": 79,
+        "trailer": null,
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "A Merry Scottish Christmas",
+        "image": "https://image.tmdb.org/t/p/w500/51n4cU70MRlcAzxr8G8yqcaBohK.jpg",
+        "description": "Zwei Geschwister reisen nach Schottland und erleben ein Weihnachtsfest voller Überraschungen.",
+        "rottenTomatoScore": 65,
+        "trailer": "https://www.youtube.com/watch?v=RRnu7ud1s4I",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Mystic Christmas",
+        "image": "https://image.tmdb.org/t/p/w500/nYKLBXEOPfw2UK1FPLeIcrJgVji.jpg",
+        "description": "Eine Meeresbiologin entdeckt während eines Besuchs in ihrer Heimatstadt die Magie von Weihnachten neu.",
+        "rottenTomatoScore": 72,
+        "trailer": "https://www.youtube.com/watch?v=hWwYxn7kKaQ",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "What Happens Later",
+        "image": "https://image.tmdb.org/t/p/w500/5TrWftAac3EeMcatyiCdAglWKb6.jpg",
+        "description": "Zwei Ex-Partner begegnen sich zufällig an einem verschneiten Flughafen und reflektieren über ihre Vergangenheit.",
+        "rottenTomatoScore": 63,
+        "trailer": "https://www.youtube.com/watch?v=zceSigCGWSQ",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "It's A Wonderful Knife",
+        "image": "https://image.tmdb.org/t/p/w500/qToCVGHgu1670jZKjbdUnMVKmPc.jpg",
+        "description": "Ein festlicher Horrorfilm, in dem eine Frau ein mörderisches Abenteuer erlebt und versucht, ihre Realität wiederherzustellen.",
+        "rottenTomatoScore": 70,
+        "trailer": "https://www.youtube.com/watch?v=yLdAYrG0xo0",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "A Charlie Brown Christmas",
+        "image": "https://image.tmdb.org/t/p/w500/vtaufTzJBMJAeziQA1eP4BLU24C.jpg",
+        "description": "Charlie Brown sucht nach der wahren Bedeutung von Weihnachten mit Hilfe seiner Freunde und einem kleinen Weihnachtsbaum.",
+        "rottenTomatoScore": 85,
+        "trailer": "https://www.youtube.com/watch?v=dV9sgMB-BKE",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "The Grinch",
+        "image": "https://image.tmdb.org/t/p/w500/1Bc9VNd9CIHIyJtPKFqSQzrXWru.jpg",
+        "description": "Ein griesgrämiges Wesen plant, Weihnachten für die Bewohner von Whoville zu stehlen.",
+        "rottenTomatoScore": 59,
+        "trailer": "https://www.youtube.com/watch?v=_UOh0UX3alI",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Jingle Jangle: A Christmas Journey",
+        "image": "https://image.tmdb.org/t/p/w500/5RbyHIVydD3Krmec1LlUV7rRjet.jpg",
+        "description": "Ein magisches Weihnachtsmusical über einen Spielzeugmacher, dessen Erfindungen ein Wunder bewirken.",
+        "rottenTomatoScore": 89,
+        "trailer": "https://www.youtube.com/watch?v=aYPUYVgwLWY",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "The Christmas Chronicles",
+        "image": "https://image.tmdb.org/t/p/w500/5Il2EMSF2KecrUKZPuen6BZmaCP.jpg",
+        "description": "Zwei Geschwister helfen dem Weihnachtsmann, Weihnachten zu retten, nachdem sie versehentlich seinen Schlitten abstürzen lassen.",
+        "rottenTomatoScore": 68,
+        "trailer": "https://www.youtube.com/watch?v=YaeDa_Uempk",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Family Switch",
+        "image": "https://image.tmdb.org/t/p/w500/g8Gwitm4CtZBSYhLeSY4Z3Xwwcg.jpg",
+        "description": "Eine Familie erlebt ein verrücktes Abenteuer, als alle ihre Körper tauschen und versuchen, ihre Leben zurückzutauschen.",
+        "rottenTomatoScore": 64,
+        "trailer": "https://www.youtube.com/watch?v=SWh4c9EVqGM",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "A Boy Called Christmas",
+        "image": "https://image.tmdb.org/t/p/w500/1sRejtiHOZGggZd9RcmdqbapLM5.jpg",
+        "description": "Ein Junge begibt sich auf eine abenteuerliche Reise, um seinen Vater zu finden und den Ursprung von Weihnachten zu entdecken.",
+        "rottenTomatoScore": 83,
+        "trailer": "https://www.youtube.com/watch?v=aFI_aiidke0",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "The Princess Switch",
+        "image": "https://image.tmdb.org/t/p/w500/A8XgZE8CsHiYN243MEd07GLCep.jpg",
+        "description": "Eine Bäckerin und eine Prinzessin tauschen ihre Plätze und erleben unerwartete Abenteuer zur Weihnachtszeit.",
+        "rottenTomatoScore": 75,
+        "trailer": "https://www.youtube.com/watch?v=-WBhj57fHeI",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "The Santa Clause",
+        "image": "https://image.tmdb.org/t/p/w500/2yqaR8HJUQowx8agxEjWVmyBIqo.jpg",
+        "description": "Ein Mann wird versehentlich zum neuen Weihnachtsmann und muss lernen, seine neue Rolle zu akzeptieren.",
+        "rottenTomatoScore": 72,
+        "trailer": "https://www.youtube.com/watch?v=aCc7bTJ8FCM",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Love Actually",
+        "image": "https://image.tmdb.org/t/p/w500/1ODdWLpyOnIVl0l67GrdaFDlJGf.jpg",
+        "description": "Eine romantische Komödie, die die miteinander verbundenen Liebesgeschichten von verschiedenen Menschen in der Weihnachtszeit erzählt.",
+        "rottenTomatoScore": 64,
+        "trailer": "https://www.youtube.com/watch?v=r3mJrSA1x5s",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "The Holiday",
+        "image": "https://image.tmdb.org/t/p/w500/n26GUumac5MrzpJiv0DPI7MMIUJ.jpg",
+        "description": "Zwei Frauen tauschen zur Weihnachtszeit ihre Häuser, um Abstand von ihren komplizierten Liebesleben zu gewinnen.",
+        "rottenTomatoScore": 73,
+        "trailer": "https://www.youtube.com/watch?v=wk9caHO3pW0",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "The Nightmare Before Christmas",
+        "image": "https://image.tmdb.org/t/p/w500/oQffRNjK8e19rF7xVYEN8ew0j7b.jpg",
+        "description": "Jack Skellington, der Kürbiskönig, entdeckt Weihnachten und bringt Chaos nach Halloween Town.",
+        "rottenTomatoScore": 95,
+        "trailer": "https://www.youtube.com/watch?v=lVtetOjX_vk",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "National Lampoon's Christmas Vacation",
+        "image": "https://image.tmdb.org/t/p/w500/bIPDxGAuoIFeLTOsAsKkawxWIvq.jpg",
+        "description": "Die Griswolds planen ein perfektes Familienweihnachten, doch alles geht schief.",
+        "rottenTomatoScore": 70,
+        "trailer": "https://www.youtube.com/watch?v=tLVd4ipC5Lc",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "The Christmas Chronicles 2",
+        "image": "https://image.tmdb.org/t/p/w500/6sG0kbEvAi3RRLcGGU5h8l3qAPa.jpg",
+        "description": "Die Geschwister helfen erneut dem Weihnachtsmann, Weihnachten vor einem neuen Feind zu retten.",
+        "rottenTomatoScore": 65,
+        "trailer": "https://www.youtube.com/watch?v=HVzBwSOcBaI",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Scrooged",
+        "image": "https://image.tmdb.org/t/p/w500/2jyzx7yRAxyqjEESob3d8U1pRcr.jpg",
+        "description": "Eine moderne Version von Charles Dickens' Weihnachtsgeschichte mit Bill Murray als zynischem TV-Produzenten.",
+        "rottenTomatoScore": 71,
+        "trailer": "https://www.youtube.com/watch?v=3YjrsSEEreY",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Gremlins",
+        "image": "https://image.tmdb.org/t/p/w500/3iUgvvtB01BuTntPOBcG64kYk6y.jpg",
+        "description": "Ein pelziges Haustier verursacht Chaos, als Regeln missachtet werden und Monster entstehen.",
+        "rottenTomatoScore": 85,
+        "trailer": "https://www.youtube.com/watch?v=PXXZx6skXrw",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Die Hard",
+        "image": "https://image.tmdb.org/t/p/w500/yFihWxQcmqcaBR31QM6Y8gT6aYV.jpg",
+        "description": "Ein Polizist kämpft gegen Terroristen in einem Wolkenkratzer, während er Weihnachten retten will.",
+        "rottenTomatoScore": 94,
+        "trailer": "https://www.youtube.com/watch?v=osIeLeqCRmw",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Krampus",
+        "image": "https://image.tmdb.org/t/p/w500/sAolMRD9rFSTU7tssfFuLEJJa7w.jpg",
+        "description": "Eine Familie wird zu Weihnachten von einem dämonischen Wesen heimgesucht, das unartige Kinder bestraft.",
+        "rottenTomatoScore": 66,
+        "trailer": "https://www.youtube.com/watch?v=h6cVyoMH4QE",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Arthur Christmas",
+        "image": "https://image.tmdb.org/t/p/w500/yF7SNheAGWavNnjbAronedwjC1N.jpg",
+        "description": "Arthur, der Sohn des Weihnachtsmanns, muss ein vergessenes Geschenk rechtzeitig zustellen.",
+        "rottenTomatoScore": 92,
+        "trailer": "https://www.youtube.com/watch?v=7tk-WZSqIGQ",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "The Muppet Christmas Carol",
+        "image": "https://image.tmdb.org/t/p/w500/ssrV29QSVVJuemBHho0Qx7pFYak.jpg",
+        "description": "Die Muppets erzählen die klassische Geschichte von Ebenezer Scrooge und den Geistern der Weihnacht.",
+        "rottenTomatoScore": 76,
+        "trailer": "https://www.youtube.com/watch?v=JXaVI60BFJM",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Frosty the Snowman",
+        "image": "https://image.tmdb.org/t/p/w500/gw7ie4W3iW8nefnZ4kuw8dgYNM2.jpg",
+        "description": "Ein magischer Schneemann kommt mit einem alten Seidenhut zum Leben und erlebt Abenteuer mit Kindern.",
+        "rottenTomatoScore": 73,
+        "trailer": "https://www.youtube.com/watch?v=v21UuibZ7ig",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Rudolph the Red-Nosed Reindeer",
+        "image": "https://image.tmdb.org/t/p/w500/xjAElUhXuc7zFJPj3qUHjcySNsE.jpg",
+        "description": "Rudolph, das Rentier mit der roten Nase, hilft dem Weihnachtsmann, Weihnachten zu retten.",
+        "rottenTomatoScore": 92,
+        "trailer": "https://www.youtube.com/watch?v=W6IAY9bSP7s",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "The Bishop's Wife",
+        "image": "https://image.tmdb.org/t/p/w500/2sMpffmvoJlW7WBcvyHTPR9DEsj.jpg",
+        "description": "Ein Engel hilft einem Bischof, die wahre Bedeutung von Weihnachten zu erkennen.",
+        "rottenTomatoScore": 84,
+        "trailer": "https://www.youtube.com/watch?v=bgb6ZRNQTv8",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "The Best Man Holiday",
+        "image": "https://image.tmdb.org/t/p/w500/i4ecMHJQpclIEr4mh5uzjWr38GC.jpg",
+        "description": "Eine Gruppe von College-Freunden trifft sich zu Weihnachten wieder und alte Spannungen flammen auf.",
+        "rottenTomatoScore": 71,
+        "trailer": "https://www.youtube.com/watch?v=k6iNiJivOOQ",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Holiday Affair",
+        "image": "https://image.tmdb.org/t/p/w500/staCqBMa3uv08sCJpQy0CmaW72y.jpg",
+        "description": "Eine Witwe trifft auf einen charmanten Mann, der ihr Leben verändert.",
+        "rottenTomatoScore": 86,
+        "trailer": "https://www.youtube.com/watch?v=MCuhDQ70Z84",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "The Family Stone",
+        "image": "https://image.tmdb.org/t/p/w500/bvs6TxyPQ1ZK5yySFpKlCHGvGty.jpg",
+        "description": "Eine konservative Frau verbringt die Feiertage mit der chaotischen Familie ihres Freundes.",
+        "rottenTomatoScore": 53,
+        "trailer": "https://www.youtube.com/watch?v=_wM0Zn3493o",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Deck the Halls",
+        "image": "https://image.tmdb.org/t/p/w500/muRplVEe8xU1jVlq9WpQSOamb6s.jpg",
+        "description": "Zwei Nachbarn kämpfen um den besten Weihnachtsschmuck der Straße.",
+        "rottenTomatoScore": 6,
+        "trailer": "https://www.youtube.com/watch?v=7mGT_IC4oxM",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "A Very Harold & Kumar Christmas",
+        "image": "https://image.tmdb.org/t/p/w500/cncxLilRHKayn8VKhzjAMHkbN4f.jpg",
+        "description": "Harold und Kumar erleben ein chaotisches Weihnachtsabenteuer.",
+        "rottenTomatoScore": 68,
+        "trailer": "https://www.youtube.com/watch?v=rILHv9oFq38",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Bad Santa",
+        "image": "https://image.tmdb.org/t/p/w500/rfClLIyeHqpMofmrPY8DaLe4z9x.jpg",
+        "description": "Ein betrunkener Dieb spielt den Weihnachtsmann, um Kaufhäuser auszurauben.",
+        "rottenTomatoScore": 78,
+        "trailer": "https://www.youtube.com/watch?v=cvXyEiIoH2c",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Four Christmases",
+        "image": "https://image.tmdb.org/t/p/w500/zixj44TC7rwzpxtJAG5OzFJnEqe.jpg",
+        "description": "Ein Paar besucht an Weihnachten vier verschiedene Familienfeiern.",
+        "rottenTomatoScore": 25,
+        "trailer": "https://www.youtube.com/watch?v=6veo6Js7HUE",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "The Holiday Calendar",
+        "image": "https://image.tmdb.org/t/p/w500/hiCeUExxUTGbU6FXORLf673uwvK.jpg",
+        "description": "Eine Fotografin entdeckt einen magischen Adventskalender, der ihre Zukunft vorhersagt.",
+        "rottenTomatoScore": 33,
+        "trailer": "https://www.youtube.com/watch?v=km7gv28_uX0",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Last Christmas",
+        "image": "https://image.tmdb.org/t/p/w500/kDEjffiKgjuGo2DRzsqfjvW0CQh.jpg",
+        "description": "Eine junge Frau mit einer turbulenten Vergangenheit findet an Weihnachten neue Hoffnung.",
+        "rottenTomatoScore": 46,
+        "trailer": "https://www.youtube.com/watch?v=z9CEIcmWmtA",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "The Christmas Box",
+        "image": "https://image.tmdb.org/t/p/w500/ezbT2hvOHJJlhSg6JifhPf5ODBV.jpg",
+        "description": "Ein Vater entdeckt durch eine geheimnisvolle Box die wahre Bedeutung von Weihnachten.",
+        "rottenTomatoScore": null,
+        "trailer": null,
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Silent Night",
+        "image": "https://image.tmdb.org/t/p/w500/nJCP1ZNTPKlZ7S0Kv3gbmuraAT4.jpg",
+        "description": "Ein Weihnachtsabend nimmt eine düstere Wendung, als eine Familie sich auf eine bevorstehende Katastrophe vorbereitet.",
+        "rottenTomatoScore": 63,
+        "trailer": "https://www.youtube.com/watch?v=eKmEdwQLzoA",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Love the Coopers",
+        "image": "https://image.tmdb.org/t/p/w500/aHJhk1aWviX9RAbbljFyPO04yrt.jpg",
+        "description": "Vier Generationen der Cooper-Familie erleben eine chaotische und herzerwärmende Weihnachtszeit.",
+        "rottenTomatoScore": 19,
+        "trailer": "https://www.youtube.com/watch?v=mOc1NEHEh3M",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Christmas with the Kranks",
+        "image": "https://image.tmdb.org/t/p/w500/q866vL3KhAjbkZH1enT7AoxmRHx.jpg",
+        "description": "Ein Ehepaar versucht, Weihnachten zu entkommen, aber die Nachbarn haben andere Pläne.",
+        "rottenTomatoScore": 5,
+        "trailer": "https://www.youtube.com/watch?v=nHC6hmTvsLo",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "The Star",
+        "image": "https://image.tmdb.org/t/p/w500/tEbDvivUfsCupngKIfMJJ725eAD.jpg",
+        "description": "Ein mutiger kleiner Esel erlebt die Geburt von Jesus aus einer einzigartigen Perspektive.",
+        "rottenTomatoScore": 44,
+        "trailer": "https://www.youtube.com/watch?v=drWWjIhugik",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "The Man Who Invented Christmas",
+        "image": "https://image.tmdb.org/t/p/w500/qRkzRue5rTzB6PESXBJCKqROOXC.jpg",
+        "description": "Die Geschichte, wie Charles Dickens 'A Christmas Carol' schrieb und Weihnachten neu definierte.",
+        "rottenTomatoScore": 79,
+        "trailer": "https://www.youtube.com/watch?v=nx3ctBjG6yI",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Christmas Inheritance",
+        "image": "https://image.tmdb.org/t/p/w500/sqdbF40nBzS2IZVAGPxJT7loxoM.jpg",
+        "description": "Eine verwöhnte Erbin muss ihre Werte überdenken, um das Familienunternehmen zu retten.",
+        "rottenTomatoScore": 43,
+        "trailer": "https://www.youtube.com/watch?v=K4STcvndzbE",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "Christmas Chronicles",
+        "image": "https://image.tmdb.org/t/p/w500/5Il2EMSF2KecrUKZPuen6BZmaCP.jpg",
+        "description": "Zwei Geschwister helfen dem Weihnachtsmann, Weihnachten zu retten.",
+        "rottenTomatoScore": 68,
+        "trailer": "https://www.youtube.com/watch?v=YaeDa_Uempk",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "My Dad's Christmas Date",
+        "image": "https://image.tmdb.org/t/p/w500/mAfeEGYIwEG4YmVk77pv8fk0Dpr.jpg",
+        "description": "Eine Tochter versucht, ihren alleinerziehenden Vater zu verkuppeln und beschert ihm ein unvergessliches Weihnachtsfest.",
+        "rottenTomatoScore": 38,
+        "trailer": "https://www.youtube.com/watch?v=rECDY0e6dTM",
+        "matched": [],
+        "declined": []
+    },
+    {
+        "name": "How the Grinch Stole Christmas",
+        "image": "https://image.tmdb.org/t/p/w500/AmUs3hximCKa90sHuIRr5Bz8ci5.jpg",
+        "description": "Der Grinch plant, Weihnachten in Whoville zu ruinieren, doch ein kleines Mädchen verändert seine Sichtweise.",
+        "rottenTomatoScore": 49,
+        "trailer": "https://www.youtube.com/watch?v=myTaigPrbsg",
+        "matched": [],
+        "declined": []
+    }
+]

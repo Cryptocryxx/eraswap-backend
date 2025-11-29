@@ -1,0 +1,26 @@
+@host = http://87.106.90.201
+//@host = http://localhost:3005
+
+
+###
+
+POST  {{host}}/api/log/email HTTP/1.1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "toMail": "l.bauscher@gmx.de",
+    "fromMail": "Tür 7",
+    "header": "Interaktion mit Tür 7",
+    "body": "Es wurde Tür 7 geöffnet und das eingegeben."
+}
+
+###
+
+POST  {{host}}/api/log HTTP/1.1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "user": "angi",
+    "door": 5,
+    "body": "Es wurde Tür 7 geöffnet und waaaaaaas eingegeben."
+}

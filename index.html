@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Landing Header – Center Emphasis</title>
+  <style>
+    :root{
+      --bg: #0e0f12;
+      --surface: rgba(255,255,255,0.04);
+      --text: #e8eaed;
+      --muted: #a3a7ad;
+      --accent: #86C232; /* you mentioned this palette often */
+      --accent-ink: #0d0f0d;
+      --ring: rgba(134,194,50,0.45);
+    }
+    @media (prefers-color-scheme: light) {
+      :root{ --bg:#f6f7f9; --surface: rgba(0,0,0,0.04); --text:#0b0c0f; --muted:#51565c; --accent:#4B8B1C; --accent-ink:#ffffff; --ring: rgba(75,139,28,0.35);}  
+    }
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font: 500 16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      background:radial-gradient(1000px 600px at 50% -300px, rgba(134,194,50,0.075), transparent 60%), var(--bg);
+      letter-spacing:0.2px;
+    }
+    /* --- Header --- */
+    .site-header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(8px);
+      background: color-mix(in oklab, var(--bg) 88%, transparent);
+      border-bottom:1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    }
+    .container{max-width:1100px; margin:0 auto; padding:14px clamp(16px,4vw,28px);}
+    .nav{
+      display:grid; grid-template-columns: 1fr auto 1fr; align-items:center; gap:12px;
+    }
+    .nav-group{ display:flex; align-items:center; gap:18px; }
+    .nav-group.right{ justify-content:flex-end; }
+
+    a.nav-link{ color:var(--muted); text-decoration:none; padding:10px 8px; border-radius:10px; transition: 140ms ease; position:relative; }
+    a.nav-link:hover{ color:var(--text); background:var(--surface); }
+    a.nav-link:focus-visible{ outline:2px solid var(--ring); outline-offset:3px; }
+
+    /* Center CTA */
+    .cta {
+      position:relative; display:inline-flex; align-items:center; gap:10px;
+      padding:10px 18px; border-radius:999px; text-decoration:none; font-weight:650; letter-spacing:0.2px;
+      color:var(--accent-ink); background:var(--accent); box-shadow: 0 8px 20px -8px var(--ring), 0 1px 0 rgba(255,255,255,0.08) inset;
+    }
+    .cta:hover{ transform:translateY(-1px); box-shadow: 0 14px 30px -12px var(--ring); }
+    .cta:active{ transform:translateY(0); }
+    .cta:focus-visible{ outline:3px solid var(--ring); outline-offset:3px; }
+
+    .badge{ font-size:11px; padding:3px 8px; border-radius:999px; background: rgba(0,0,0,0.18); color: #fff; }
+
+    /* Active page marker (optional) */
+    .nav-link.active{ color:var(--text); }
+    .nav-link.active::after{
+      content:""; position:absolute; left:50%; bottom:-8px; transform:translateX(-50%);
+      width:6px; height:6px; border-radius:999px; background:var(--accent); filter: drop-shadow(0 0 4px var(--ring));
+    }
+
+    /* Mobile */
+    .hamburger{ display:none; }
+    @media (max-width: 860px){
+      .nav{ grid-template-columns: auto auto; }
+      .nav-group.left, .nav-group.right{ display:none; }
+      .hamburger{ display:inline-flex; align-items:center; gap:10px; }
+      .mobile-panel{ display:none; position:fixed; inset:60px 12px auto 12px; border-radius:16px; background: color-mix(in oklab, var(--bg) 95%, transparent); backdrop-filter: blur(10px); border:1px solid color-mix(in oklab, var(--text) 10%, transparent); box-shadow: 0 20px 80px -40px rgba(0,0,0,0.5); }
+      .mobile-panel.open{ display:block; }
+      .mobile-list{ list-style:none; margin:10px; padding:10px; display:flex; flex-direction:column; gap:6px; }
+      .mobile-list a{ text-decoration:none; color:var(--text); padding:12px 14px; border-radius:12px; }
+      .mobile-list a:hover{ background:var(--surface); }
+      .mobile-list .cta{ justify-content:center; }
+    }
+
+    /* Demo hero spacing so header sits above content */
+    .hero{ display:grid; place-items:center; min-height:70vh; padding:48px 16px; text-align:center; gap:16px; }
+    .hero h1{ font-size: clamp(28px, 6vw, 54px); line-height:1.04; margin:0; letter-spacing:-0.5px; }
+    .hero p{ max-width: 740px; color:var(--muted); margin:0 auto; font-size: clamp(14px, 2.4vw, 18px); }
+    .cta-ghost{ display:inline-flex; gap:10px; align-items:center; padding:10px 16px; border-radius:999px; text-decoration:none; color:var(--text); background:var(--surface); }
+  </style>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="nav" role="navigation" aria-label="Primary">
+        <!-- Left group -->
+        <div class="nav-group left" aria-label="Why">
+          <a class="nav-link" href="#goal" data-name="Goal">Goal</a>
+          <a class="nav-link" href="#motivation" data-name="Motivation">Motivation</a>
+        </div>
+
+        <!-- Center emphasis -->
+        <a class="cta" href="#app" aria-current="page">
+          <span class="badge" aria-hidden="true">Core</span>
+          The App
+        </a>
+
+        <!-- Right group -->
+        <div class="nav-group right" aria-label="About & Contact">
+          <a class="nav-link" href="#team" data-name="Team">Team</a>
+          <a class="nav-link" href="#contact" data-name="Contact">Contact</a>
+        </div>
+
+        <!-- Mobile toggle (shows on <860px) -->
+        <button class="hamburger" id="menuBtn" aria-label="Open Menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Menu
+        </button>
+      </nav>
+    </div>
+
+    <!-- Mobile flyout -->
+    <div class="mobile-panel" id="mobilePanel">
+      <ul class="mobile-list" role="list">
+        <li><a href="#goal">Goal</a></li>
+        <li><a href="#motivation">Motivation</a></li>
+        <li><a class="cta" href="#app">The App</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Demo content to illustrate layout and anchor targets -->
+  <main>
+    <section id="goal" class="hero">
+      <div>
+        <h1>Goal</h1>
+        <p>State the north star: the measurable outcome you exist to change. Keep it concrete and testable.</p>
+      </div>
+    </section>
+    <section id="motivation" class="hero">
+      <div>
+        <h1>Motivation</h1>
+        <p>Explain the tension or pain that justifies your existence. Use one killer fact and one human story.</p>
+      </div>
+    </section>
+    <section id="app" class="hero">
+      <div>
+        <h1>The App</h1>
+        <p>Demo, key screens, and one CTA. If this isn’t a direct product entry, rename to <em>Product</em> or <em>How it works</em>.</p>
+        <p><a class="cta-ghost" href="#contact">Request a demo →</a></p>
+      </div>
+    </section>
+    <section id="team" class="hero">
+      <div>
+        <h1>Team</h1>
+        <p>3–5 bios max. Lead with why this team is uniquely suited to the problem.</p>
+      </div>
+    </section>
+    <section id="contact" class="hero">
+      <div>
+        <h1>Contact</h1>
+        <p>Short form or mailto. Put response-time expectation and privacy note.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Mobile toggle
+    const btn = document.getElementById('menuBtn');
+    const panel = document.getElementById('mobilePanel');
+    btn?.addEventListener('click', () => {
+      const open = panel.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+
+    // Optional: highlight active link on scroll
+    const sections = [...document.querySelectorAll('main section[id]')];
+    const links = [...document.querySelectorAll('.nav-link')];
+    const map = new Map(links.map(a => [a.getAttribute('href'), a]));
+
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const id = '#'+e.target.id;
+          links.forEach(l=>l.classList.remove('active'));
+          map.get(id)?.classList.add('active');
+        }
+      });
+    },{ rootMargin:'-40% 0px -55% 0px', threshold:0.01 });
+
+    sections.forEach(s=>obs.observe(s));
+  </script>
+</body>
+</html>

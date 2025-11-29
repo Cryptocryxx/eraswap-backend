@@ -1,0 +1,250 @@
+{
+    "Home Alone": {
+        "poster": "https://image.tmdb.org/t/p/w500/uuitWHpJwxD1wruFl2nZHIb4UGN.jpg",
+        "trailer": "https://www.youtube.com/watch?v=g64dOUrwqrE"
+    },
+    "Harry Potter and the Philosopher's Stone": {
+        "poster": "https://image.tmdb.org/t/p/w500/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg",
+        "trailer": "https://www.youtube.com/watch?v=l91Km49W9qI"
+    },
+    "Harry Potter and the Chamber of Secrets": {
+        "poster": "https://image.tmdb.org/t/p/w500/sdEOH0992YZ0QSxgXNIGLq1ToUi.jpg",
+        "trailer": "https://www.youtube.com/watch?v=nE11U5iBnH0"
+    },
+    "Harry Potter and the Prisoner of Azkaban": {
+        "poster": "https://image.tmdb.org/t/p/w500/aWxwnYoe8p2d2fcxOqtvAtJ72Rw.jpg",
+        "trailer": "https://www.youtube.com/watch?v=VwErvYgoH70"
+    },
+    "Harry Potter and the Goblet of Fire": {
+        "poster": "https://image.tmdb.org/t/p/w500/fECBtHlr0RB3foNHDiCBXeg9Bv9.jpg",
+        "trailer": "https://www.youtube.com/watch?v=4xkFJgcCQRE"
+    },
+    "Harry Potter and the Order of the Phoenix": {
+        "poster": "https://image.tmdb.org/t/p/w500/5aOyriWkPec0zUDxmHFP9qMmBaj.jpg",
+        "trailer": "https://www.youtube.com/watch?v=47PHbQTmw5g"
+    },
+    "Harry Potter and the Half-Blood Prince": {
+        "poster": "https://image.tmdb.org/t/p/w500/z7uo9zmQdQwU5ZJHFpv2Upl30i1.jpg",
+        "trailer": "https://www.youtube.com/watch?v=DgeDDXcw--I"
+    },
+    "Harry Potter and the Deathly Hallows Part 1": {
+        "poster": "https://image.tmdb.org/t/p/w500/iGoXIpQb7Pot00EEdwpwPajheZ5.jpg",
+        "trailer": "https://www.youtube.com/watch?v=MxqsmsA8y5k"
+    },
+    "Harry Potter and the Deathly Hallows Part 2": {
+        "poster": "https://image.tmdb.org/t/p/w500/c54HpQmuwXjHq2C9wmoACjxoom3.jpg",
+        "trailer": "https://www.youtube.com/watch?v=5NYt1qirBWg"
+    },
+    "Elf": {
+        "poster": "https://image.tmdb.org/t/p/w500/oOleziEempUPu96jkGs0Pj6tKxj.jpg",
+        "trailer": "https://www.youtube.com/watch?v=14o38xfHlXc"
+    },
+    "The Polar Express": {
+        "poster": "https://image.tmdb.org/t/p/w500/eOoCzH0MqeGr2taUZO4SwG416PF.jpg",
+        "trailer": "https://www.youtube.com/watch?v=f0oyHtZiJJs"
+    },
+    "Dashing Through the Snow": {
+        "poster": "https://image.tmdb.org/t/p/w500/AnfXxsoLBS6JDpu65vHsEvEcWSA.jpg",
+        "trailer": "https://www.youtube.com/watch?v=DbOmSUSmISM"
+    },
+    "Best. Christmas. Ever!": {
+        "poster": "https://image.tmdb.org/t/p/w500/yNPgjXeeb7vdNI7AQB5SWkkk6si.jpg",
+        "trailer": "https://www.youtube.com/watch?v=2deV7cUtS0E"
+    },
+    "The Naughty Nine": {
+        "poster": "https://image.tmdb.org/t/p/w500/e0lSKnfAB0p2FJ5roEwjAyy0EA0.jpg",
+        "trailer": "https://www.youtube.com/watch?v=LE4M6xQhBFA"
+    },
+    "A Christmas Carol": {
+        "poster": "https://image.tmdb.org/t/p/w500/xNwlAIdx1Ln28GRiQttUP9Gojy2.jpg",
+        "trailer": null
+    },
+    "It's a Wonderful Life": {
+        "poster": "https://image.tmdb.org/t/p/w500/bSqt9rhDZx1Q7UZ86dBPKdNomp2.jpg",
+        "trailer": "https://www.youtube.com/watch?v=iLR3gZrU2Xo"
+    },
+    "A Christmas Story Christmas": {
+        "poster": "https://image.tmdb.org/t/p/w500/bNsyhWBiuG0LbSh715YAUCLXZyi.jpg",
+        "trailer": null
+    },
+    "A Merry Scottish Christmas": {
+        "poster": "https://image.tmdb.org/t/p/w500/51n4cU70MRlcAzxr8G8yqcaBohK.jpg",
+        "trailer": "https://www.youtube.com/watch?v=RRnu7ud1s4I"
+    },
+    "Mystic Christmas": {
+        "poster": "https://image.tmdb.org/t/p/w500/nYKLBXEOPfw2UK1FPLeIcrJgVji.jpg",
+        "trailer": "https://www.youtube.com/watch?v=hWwYxn7kKaQ"
+    },
+    "What Happens Later": {
+        "poster": "https://image.tmdb.org/t/p/w500/5TrWftAac3EeMcatyiCdAglWKb6.jpg",
+        "trailer": "https://www.youtube.com/watch?v=zceSigCGWSQ"
+    },
+    "It's A Wonderful Knife": {
+        "poster": "https://image.tmdb.org/t/p/w500/qToCVGHgu1670jZKjbdUnMVKmPc.jpg",
+        "trailer": "https://www.youtube.com/watch?v=yLdAYrG0xo0"
+    },
+    "A Charlie Brown Christmas": {
+        "poster": "https://image.tmdb.org/t/p/w500/vtaufTzJBMJAeziQA1eP4BLU24C.jpg",
+        "trailer": "https://www.youtube.com/watch?v=dV9sgMB-BKE"
+    },
+    "The Grinch": {
+        "poster": "https://image.tmdb.org/t/p/w500/1Bc9VNd9CIHIyJtPKFqSQzrXWru.jpg",
+        "trailer": "https://www.youtube.com/watch?v=_UOh0UX3alI"
+    },
+    "Jingle Jangle: A Christmas Journey": {
+        "poster": "https://image.tmdb.org/t/p/w500/5RbyHIVydD3Krmec1LlUV7rRjet.jpg",
+        "trailer": "https://www.youtube.com/watch?v=aYPUYVgwLWY"
+    },
+    "The Christmas Chronicles": {
+        "poster": "https://image.tmdb.org/t/p/w500/5Il2EMSF2KecrUKZPuen6BZmaCP.jpg",
+        "trailer": "https://www.youtube.com/watch?v=YaeDa_Uempk"
+    },
+    "Family Switch": {
+        "poster": "https://image.tmdb.org/t/p/w500/g8Gwitm4CtZBSYhLeSY4Z3Xwwcg.jpg",
+        "trailer": "https://www.youtube.com/watch?v=SWh4c9EVqGM"
+    },
+    "A Boy Called Christmas": {
+        "poster": "https://image.tmdb.org/t/p/w500/1sRejtiHOZGggZd9RcmdqbapLM5.jpg",
+        "trailer": "https://www.youtube.com/watch?v=aFI_aiidke0"
+    },
+    "The Princess Switch": {
+        "poster": "https://image.tmdb.org/t/p/w500/A8XgZE8CsHiYN243MEd07GLCep.jpg",
+        "trailer": "https://www.youtube.com/watch?v=-WBhj57fHeI"
+    },
+    "The Santa Clause": {
+        "poster": "https://image.tmdb.org/t/p/w500/2yqaR8HJUQowx8agxEjWVmyBIqo.jpg",
+        "trailer": "https://www.youtube.com/watch?v=aCc7bTJ8FCM"
+    },
+    "Love Actually": {
+        "poster": "https://image.tmdb.org/t/p/w500/1ODdWLpyOnIVl0l67GrdaFDlJGf.jpg",
+        "trailer": "https://www.youtube.com/watch?v=r3mJrSA1x5s"
+    },
+    "The Holiday": {
+        "poster": "https://image.tmdb.org/t/p/w500/n26GUumac5MrzpJiv0DPI7MMIUJ.jpg",
+        "trailer": "https://www.youtube.com/watch?v=wk9caHO3pW0"
+    },
+    "The Nightmare Before Christmas": {
+        "poster": "https://image.tmdb.org/t/p/w500/oQffRNjK8e19rF7xVYEN8ew0j7b.jpg",
+        "trailer": "https://www.youtube.com/watch?v=lVtetOjX_vk"
+    },
+    "National Lampoon's Christmas Vacation": {
+        "poster": "https://image.tmdb.org/t/p/w500/bIPDxGAuoIFeLTOsAsKkawxWIvq.jpg",
+        "trailer": "https://www.youtube.com/watch?v=tLVd4ipC5Lc"
+    },
+    "The Christmas Chronicles 2": {
+        "poster": "https://image.tmdb.org/t/p/w500/6sG0kbEvAi3RRLcGGU5h8l3qAPa.jpg",
+        "trailer": "https://www.youtube.com/watch?v=HVzBwSOcBaI"
+    },
+    "Scrooged": {
+        "poster": "https://image.tmdb.org/t/p/w500/2jyzx7yRAxyqjEESob3d8U1pRcr.jpg",
+        "trailer": "https://www.youtube.com/watch?v=3YjrsSEEreY"
+    },
+    "Gremlins": {
+        "poster": "https://image.tmdb.org/t/p/w500/3iUgvvtB01BuTntPOBcG64kYk6y.jpg",
+        "trailer": "https://www.youtube.com/watch?v=PXXZx6skXrw"
+    },
+    "Die Hard": {
+        "poster": "https://image.tmdb.org/t/p/w500/yFihWxQcmqcaBR31QM6Y8gT6aYV.jpg",
+        "trailer": "https://www.youtube.com/watch?v=osIeLeqCRmw"
+    },
+    "Krampus": {
+        "poster": "https://image.tmdb.org/t/p/w500/sAolMRD9rFSTU7tssfFuLEJJa7w.jpg",
+        "trailer": "https://www.youtube.com/watch?v=h6cVyoMH4QE"
+    },
+    "Arthur Christmas": {
+        "poster": "https://image.tmdb.org/t/p/w500/yF7SNheAGWavNnjbAronedwjC1N.jpg",
+        "trailer": "https://www.youtube.com/watch?v=7tk-WZSqIGQ"
+    },
+    "The Muppet Christmas Carol": {
+        "poster": "https://image.tmdb.org/t/p/w500/ssrV29QSVVJuemBHho0Qx7pFYak.jpg",
+        "trailer": "https://www.youtube.com/watch?v=JXaVI60BFJM"
+    },
+    "Frosty the Snowman": {
+        "poster": "https://image.tmdb.org/t/p/w500/gw7ie4W3iW8nefnZ4kuw8dgYNM2.jpg",
+        "trailer": "https://www.youtube.com/watch?v=v21UuibZ7ig"
+    },
+    "Rudolph the Red-Nosed Reindeer": {
+        "poster": "https://image.tmdb.org/t/p/w500/xjAElUhXuc7zFJPj3qUHjcySNsE.jpg",
+        "trailer": "https://www.youtube.com/watch?v=W6IAY9bSP7s"
+    },
+    "The Bishop's Wife": {
+        "poster": "https://image.tmdb.org/t/p/w500/2sMpffmvoJlW7WBcvyHTPR9DEsj.jpg",
+        "trailer": "https://www.youtube.com/watch?v=bgb6ZRNQTv8"
+    },
+    "The Best Man Holiday": {
+        "poster": "https://image.tmdb.org/t/p/w500/i4ecMHJQpclIEr4mh5uzjWr38GC.jpg",
+        "trailer": "https://www.youtube.com/watch?v=k6iNiJivOOQ"
+    },
+    "Holiday Affair": {
+        "poster": "https://image.tmdb.org/t/p/w500/staCqBMa3uv08sCJpQy0CmaW72y.jpg",
+        "trailer": "https://www.youtube.com/watch?v=MCuhDQ70Z84"
+    },
+    "The Family Stone": {
+        "poster": "https://image.tmdb.org/t/p/w500/bvs6TxyPQ1ZK5yySFpKlCHGvGty.jpg",
+        "trailer": "https://www.youtube.com/watch?v=_wM0Zn3493o"
+    },
+    "Deck the Halls": {
+        "poster": "https://image.tmdb.org/t/p/w500/muRplVEe8xU1jVlq9WpQSOamb6s.jpg",
+        "trailer": "https://www.youtube.com/watch?v=7mGT_IC4oxM"
+    },
+    "A Very Harold & Kumar Christmas": {
+        "poster": "https://image.tmdb.org/t/p/w500/cncxLilRHKayn8VKhzjAMHkbN4f.jpg",
+        "trailer": "https://www.youtube.com/watch?v=rILHv9oFq38"
+    },
+    "Bad Santa": {
+        "poster": "https://image.tmdb.org/t/p/w500/rfClLIyeHqpMofmrPY8DaLe4z9x.jpg",
+        "trailer": "https://www.youtube.com/watch?v=cvXyEiIoH2c"
+    },
+    "Four Christmases": {
+        "poster": "https://image.tmdb.org/t/p/w500/zixj44TC7rwzpxtJAG5OzFJnEqe.jpg",
+        "trailer": "https://www.youtube.com/watch?v=6veo6Js7HUE"
+    },
+    "The Holiday Calendar": {
+        "poster": "https://image.tmdb.org/t/p/w500/hiCeUExxUTGbU6FXORLf673uwvK.jpg",
+        "trailer": "https://www.youtube.com/watch?v=km7gv28_uX0"
+    },
+    "Last Christmas": {
+        "poster": "https://image.tmdb.org/t/p/w500/kDEjffiKgjuGo2DRzsqfjvW0CQh.jpg",
+        "trailer": "https://www.youtube.com/watch?v=z9CEIcmWmtA"
+    },
+    "The Christmas Box": {
+        "poster": "https://image.tmdb.org/t/p/w500/ezbT2hvOHJJlhSg6JifhPf5ODBV.jpg",
+        "trailer": null
+    },
+    "Silent Night": {
+        "poster": "https://image.tmdb.org/t/p/w500/nJCP1ZNTPKlZ7S0Kv3gbmuraAT4.jpg",
+        "trailer": "https://www.youtube.com/watch?v=eKmEdwQLzoA"
+    },
+    "Love the Coopers": {
+        "poster": "https://image.tmdb.org/t/p/w500/aHJhk1aWviX9RAbbljFyPO04yrt.jpg",
+        "trailer": "https://www.youtube.com/watch?v=mOc1NEHEh3M"
+    },
+    "Christmas with the Kranks": {
+        "poster": "https://image.tmdb.org/t/p/w500/q866vL3KhAjbkZH1enT7AoxmRHx.jpg",
+        "trailer": "https://www.youtube.com/watch?v=nHC6hmTvsLo"
+    },
+    "The Star": {
+        "poster": "https://image.tmdb.org/t/p/w500/tEbDvivUfsCupngKIfMJJ725eAD.jpg",
+        "trailer": "https://www.youtube.com/watch?v=drWWjIhugik"
+    },
+    "The Man Who Invented Christmas": {
+        "poster": "https://image.tmdb.org/t/p/w500/qRkzRue5rTzB6PESXBJCKqROOXC.jpg",
+        "trailer": "https://www.youtube.com/watch?v=nx3ctBjG6yI"
+    },
+    "Christmas Inheritance": {
+        "poster": "https://image.tmdb.org/t/p/w500/sqdbF40nBzS2IZVAGPxJT7loxoM.jpg",
+        "trailer": "https://www.youtube.com/watch?v=K4STcvndzbE"
+    },
+    "Christmas Chronicles": {
+        "poster": "https://image.tmdb.org/t/p/w500/5Il2EMSF2KecrUKZPuen6BZmaCP.jpg",
+        "trailer": "https://www.youtube.com/watch?v=YaeDa_Uempk"
+    },
+    "My Dad's Christmas Date": {
+        "poster": "https://image.tmdb.org/t/p/w500/mAfeEGYIwEG4YmVk77pv8fk0Dpr.jpg",
+        "trailer": "https://www.youtube.com/watch?v=rECDY0e6dTM"
+    },
+    "How the Grinch Stole Christmas": {
+        "poster": "https://image.tmdb.org/t/p/w500/AmUs3hximCKa90sHuIRr5Bz8ci5.jpg",
+        "trailer": "https://www.youtube.com/watch?v=myTaigPrbsg"
+    }
+}
