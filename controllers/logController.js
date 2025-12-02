@@ -1,7 +1,7 @@
-const email = require("../logging/mail")
-const log = require("../logging/logger")
-const fs = require('fs');
-const path = require('path');
+import email from '../utils/email.js';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 /**
  * Diese Methode dient dazu, die Anmeldeinformationen eines Benutzers zu überprüfen.
@@ -63,8 +63,8 @@ async function logInFile(door, body, user = "angi") {
     }
 }
 
-module.exports = {
+export default {
     sendEMail,
     logFile,
     logInFile
-}
+};

@@ -1,19 +1,28 @@
-import express, {} from 'express';
+import express from 'express';
 import cors from 'cors';
-import path from 'path';
-import fs from 'fs';
-import { getPool } from './databases/database.js';
+import db from './databases/database.js';
 import usersRouter from './routers/usersRouter.js';
+import itemsRouter from './routers/itemsRouter.js';
+import cartsRouter from './routers/cartsRouter.js';
+import ordersRouter from './routers/ordersRouter.js';
+import inventoryRouter from './routers/inventoryRouter.js';
 
 const app = express();
+
 const PORT = 3005;
 // Connect to database
-getPool();
+db.getPool(); // Initialize the pool
 // Middleware
 app.use(cors({ origin: true }));
 app.use(express.json());
-// Routes
+//app.use(express.urlencoded({ extended: true }));
+
 app.use('/api/users', usersRouter);
+app.use('/api/items', itemsRouter);
+app.use('/api/carts', cartsRouter);
+app.use('/api/orders', ordersRouter);
+app.use('/api/inventory', inventoryRouter);
+
 // Serve static files (optional)
 // app.use('/static', express.static(path.join(process.cwd(), 'static')));
 // Start server

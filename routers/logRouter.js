@@ -1,5 +1,6 @@
 //Imports
-const express = require('express') 
+import express from 'express';
+
 const router = express.Router()
 const logMiddleware = require("./logMiddleware");
 
@@ -10,4 +11,4 @@ const log = require('../controllers/logController')
 router.post('/email', log.sendEMail)
 router.post('/', log.logFile)
 
-module.exports = router
+export default router;

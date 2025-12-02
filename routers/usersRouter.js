@@ -1,18 +1,16 @@
 //Imports
-const express = require('express');
+import express from 'express';
+import logMiddleware from "./logMiddleware.js";
+import usersController from '../controllers/usersController.js';
 
 const router = express.Router();
 
-const logMiddleware = require("./logMiddleware");
 router.use(logMiddleware);
 
-const usersController = require('../controllers/usersController');
-
-
 router.post("/register", usersController.registerUser);
-router.post("/login", usersController.loginUser);
-router.get("/:userID/profile", usersController.getUserProfile);
-router.put("/:userID/profile", usersController.updateUserProfile);
-router.delete("/:userID", usersController.deleteUserAccount);
+router.get("/login", usersController.loginUser);
+router.get("/profile/:userid", usersController.getUserProfile);
+router.put("/profile/:userid", usersController.updateUserProfile);
+router.delete("/:userid", usersController.deleteUserAccount);
 
-module.exports = router;
+export default router;

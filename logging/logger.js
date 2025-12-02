@@ -1,5 +1,5 @@
-const pino = require("pino");
-const fs = require("fs");
+import pino from "pino";
+//import fs from "fs";
 
 const streams = [
   {
@@ -15,10 +15,11 @@ const streams = [
   },
 ];
 
-module.exports = pino(
+const logger = pino(
   {
     level: "info",
   },
   pino.multistream(streams)
 );
 
+export default logger;

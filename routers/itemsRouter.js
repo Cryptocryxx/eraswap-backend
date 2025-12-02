@@ -1,16 +1,16 @@
-//Imports
-const express = require('express') 
-const router = express.Router()
-const logMiddleware = require("./logMiddleware");
+import express from 'express';
+import logMiddleware from './logMiddleware.js';
+import itemsController from '../controllers/itemsController.js';
 
+const router = express.Router();
 router.use(logMiddleware);
-const itemsController = require('../controllers/itemsController')
 
+router.get('/', itemsController.getAllItems);
+router.get('/:id', itemsController.getItemById);
+router.post('/', itemsController.createItem);
+router.put('/:id', itemsController.updateItem);
+router.patch('/:id', itemsController.updateItem); // partial allowed too
+router.delete('/:id', itemsController.deleteItem);
+router.patch('/:id/stock', itemsController.adjustItemStock);
 
-router.get('/', itemsController.getItems)
-router.get('/:itemID', itemsController.getItemByID)
-router.post('/', itemsController.addItem)
-router.put('/:itemID', itemsController.updateItem)
-router.delete('/:itemID', itemsController.deleteItem)
-
-module.exports = router
+export default router;

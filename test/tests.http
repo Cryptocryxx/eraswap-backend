@@ -1,0 +1,13 @@
+@baseUrl = http://127.0.0.1:3005
+
+POST {{baseUrl}}/api/users/register
+Content-Type: application/json
+
+{
+  "username": "testuser_{{timestamp}}",
+  "email": "testuser_{{timestamp}}@example.com",
+  "password": "Password123!",
+  "firstName": "Test",
+  "lastName": "User",
+  "birthday": "2000-01-01"
+}

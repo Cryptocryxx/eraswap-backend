@@ -1,4 +1,4 @@
-import { logger } from '../logging/logger.js';
+import logger from '../logging/logger.js';
 
 /**
  * Middleware-Funktion, die bei jeder Anfrage aufgerufen wird und die Methode sowie die URL der Anfrage protokolliert.
@@ -14,4 +14,4 @@ function logMiddleware(req, res, next) {
 }
 
 
-module.exports = logMiddleware;
+export default logMiddleware;
