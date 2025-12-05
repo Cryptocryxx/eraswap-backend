@@ -18,6 +18,14 @@ const Item = sequelize.define('item', {
       min: 0,
     },
   },
+  icon: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  pictures: {
+    type: DataTypes.JSON,
+    allowNull: true,
+  },
   category: {
     type: DataTypes.STRING,
     allowNull: true,

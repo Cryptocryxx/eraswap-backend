@@ -54,7 +54,8 @@ CREATE TABLE orders (
 CREATE TABLE items (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    picture VARCHAR(255),
+    icon VARCHAR(255),
+    pictures JSON,
     price DECIMAL(10,2) NOT NULL,
     description TEXT,
     category VARCHAR(50) DEFAULT 'Furniture',

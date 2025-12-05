@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
 import db from './databases/database.js';
 import usersRouter from './routers/usersRouter.js';
 import itemsRouter from './routers/itemsRouter.js';
@@ -24,6 +25,7 @@ app.use('/api/orders', ordersRouter);
 app.use('/api/inventory', inventoryRouter);
 
 // Serve static files (optional)
+app.use('/static/uploads', express.static(path.join(process.cwd(), 'uploads', 'items')));
 // app.use('/static', express.static(path.join(process.cwd(), 'static')));
 // Start server
 app.listen(PORT, () => {

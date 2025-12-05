@@ -1,15 +1,21 @@
 import express from 'express';
 import logMiddleware from './logMiddleware.js';
 import itemsController from '../controllers/itemsController.js';
+import { upload } from '../middleware/upload.js';
 
 const router = express.Router();
 router.use(logMiddleware);
 
 router.get('/', itemsController.getAllItems);
 router.get('/:id', itemsController.getItemById);
-router.post('/', itemsController.createItem);
-router.put('/:id', itemsController.updateItem);
-router.patch('/:id', itemsController.updateItem); // partial allowed too
+
+router.post('/', upload.fields([{ name: 'icon', maxCount: 1 }, { name: 'images', maxCount: 6 }]), itemsController.createItem);
+
+// update: same
+router.put('/:id', upload.fields([{ name: 'icon', maxCount: 1 }, { name: 'images', maxCount: 6 }]), itemsController.updateItem);
+router.patch('/:id', upload.fields([{ name: 'icon', maxCount: 1 }, { name: 'images', maxCount: 6 }]), itemsController.updateItem);
+
+
 router.delete('/:id', itemsController.deleteItem);
 router.patch('/:id/stock', itemsController.adjustItemStock);
 

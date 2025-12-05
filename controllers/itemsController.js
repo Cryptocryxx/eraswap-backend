@@ -2,6 +2,35 @@
 import { Op } from 'sequelize';
 import { Item } from '../models/index.js';
 import logger from '../logging/logger.js';
+import fs from 'fs/promises';
+import path from 'path';
+
+const uploadsBaseUrl = '/static/uploads';
+const uploadDiskPath = path.join(process.cwd(), 'uploads', 'items');
+
+/**
+ * Helper: convert multer file -> public URL
+ */
+function fileUrlFromFile(file) {
+  if (!file) return null;
+  return `${uploadsBaseUrl}/${file.filename}`;
+}
+
+/**
+ * Helper: delete a local file referenced by a public URL (/static/uploads/<filename>)
+ */
+async function unlinkIfLocal(url) {
+  if (!url || typeof url !== 'string') return;
+  if (!url.startsWith(uploadsBaseUrl + '/')) return; // ignore external URLs
+  const filename = url.split('/').pop();
+  const full = path.join(uploadDiskPath, filename);
+  try {
+    await fs.unlink(full);
+  } catch (e) {
+    // ignore missing files or permission errors, but log for debug
+    logger.debug(`unlinkIfLocal: could not delete ${full}: ${e.message || e}`);
+  }
+}
 
 /**
  * GET /items
@@ -80,21 +109,43 @@ export async function getItemById(req, res) {
 
 /**
  * POST /items
- * Body: { name, price, description?, picture?, category? }
+ * Accepts JSON or multipart/form-data (with files `icon` and `images`)
+ * Body: { name, price, description?, category?, picture? }  // picture optional legacy field
  */
 export async function createItem(req, res) {
   try {
-    const { name, price, description, picture, category } = req.body;
+    // If multipart, multer has populated req.files
+    // If JSON, req.body contains fields
+    const { name, price, description, category, picture } = req.body || {};
 
     if (!name) return res.status(400).json({ error: 'Name is required' });
     if (price == null || Number.isNaN(Number(price))) return res.status(400).json({ error: 'Valid price is required' });
+
+    // handle uploaded files (if any)
+    let iconUrl = null;
+    let pictures = null;
+
+    if (req.files) {
+      // req.files from upload.fields()
+      if (req.files.icon && req.files.icon[0]) {
+        iconUrl = fileUrlFromFile(req.files.icon[0]);
+      }
+      if (req.files.images && Array.isArray(req.files.images) && req.files.images.length > 0) {
+        pictures = req.files.images.map(f => fileUrlFromFile(f));
+      }
+    }
+
+    // legacy single picture URL (body) takes precedence only if no uploaded files
+    const finalIcon = iconUrl ?? (picture ?? null);
+    const finalPictures = pictures ?? null;
 
     const newItem = await Item.create({
       name: String(name).trim(),
       price: Number(price),
       description: description ?? null,
-      picture: picture ?? null,
       category: category ?? null,
+      icon: finalIcon,
+      pictures: finalPictures,
     });
 
     logger.info(`Item created: id=${newItem.id}`);
@@ -108,6 +159,7 @@ export async function createItem(req, res) {
 /**
  * PUT/PATCH /items/:id
  * - Partial updates allowed
+ * Accepts JSON or multipart/form-data (with files `icon` and `images`)
  */
 export async function updateItem(req, res) {
   try {
@@ -126,6 +178,37 @@ export async function updateItem(req, res) {
     if (updates.name) updates.name = String(updates.name).trim();
     if (updates.category) updates.category = String(updates.category).trim();
 
+    const item = await Item.findByPk(id);
+    if (!item) return res.status(404).json({ error: 'Item not found' });
+
+    // handle new files (multipart)
+    if (req.files) {
+      // icon replacement
+      if (req.files.icon && req.files.icon[0]) {
+        // delete old local icon if it was local
+        await unlinkIfLocal(item.icon);
+        updates.icon = fileUrlFromFile(req.files.icon[0]);
+      }
+
+      // images replacement (we replace the whole array)
+      if (req.files.images && Array.isArray(req.files.images) && req.files.images.length > 0) {
+        // delete old local pictures if any
+        if (Array.isArray(item.pictures)) {
+          for (const p of item.pictures) {
+            await unlinkIfLocal(p);
+          }
+        }
+        updates.pictures = req.files.images.map(f => fileUrlFromFile(f));
+      }
+    }
+
+    // allow legacy single 'picture' field to set icon if nothing uploaded
+    if (!updates.icon && updates.picture) {
+      updates.icon = updates.picture;
+      delete updates.picture;
+    }
+
+    // apply updates
     const [affected] = await Item.update(updates, { where: { id } });
     if (!affected) return res.status(404).json({ error: 'Item not found' });
 
@@ -146,6 +229,14 @@ export async function deleteItem(req, res) {
     const { id } = req.params;
     const item = await Item.findByPk(id);
     if (!item) return res.status(404).json({ error: 'Item not found' });
+
+    // delete local files (icon + pictures) if present
+    await unlinkIfLocal(item.icon);
+    if (Array.isArray(item.pictures)) {
+      for (const p of item.pictures) {
+        await unlinkIfLocal(p);
+      }
+    }
 
     await item.destroy();
     logger.info(`Item deleted: id=${id}`);
