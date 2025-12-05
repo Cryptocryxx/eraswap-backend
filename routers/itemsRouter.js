@@ -9,11 +9,11 @@ router.use(logMiddleware);
 router.get('/', itemsController.getAllItems);
 router.get('/:id', itemsController.getItemById);
 
-router.post('/', upload.fields([{ name: 'icon', maxCount: 1 }, { name: 'images', maxCount: 6 }]), itemsController.createItem);
+router.post('/', upload.fields([{ name: 'icon', maxCount: 1 }, { name: 'pictures', maxCount: 6 }]), itemsController.createItem);
 
 // update: same
-router.put('/:id', upload.fields([{ name: 'icon', maxCount: 1 }, { name: 'images', maxCount: 6 }]), itemsController.updateItem);
-router.patch('/:id', upload.fields([{ name: 'icon', maxCount: 1 }, { name: 'images', maxCount: 6 }]), itemsController.updateItem);
+router.put('/:id', upload.fields([{ name: 'icon', maxCount: 1 }, { name: 'pictures', maxCount: 6 }]), itemsController.updateItem);
+router.patch('/:id', upload.fields([{ name: 'icon', maxCount: 1 }, { name: 'pictures', maxCount: 6 }]), itemsController.updateItem);
 
 
 router.delete('/:id', itemsController.deleteItem);

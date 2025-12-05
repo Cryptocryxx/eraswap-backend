@@ -4,6 +4,7 @@ import { Item } from '../models/index.js';
 import logger from '../logging/logger.js';
 import fs from 'fs/promises';
 import path from 'path';
+import { makeThumbnail } from '../utils/imageHelpers.js';
 
 const uploadsBaseUrl = '/static/uploads';
 const uploadDiskPath = path.join(process.cwd(), 'uploads', 'items');
@@ -28,7 +29,7 @@ async function unlinkIfLocal(url) {
     await fs.unlink(full);
   } catch (e) {
     // ignore missing files or permission errors, but log for debug
-    logger.debug(`unlinkIfLocal: could not delete ${full}: ${e.message || e}`);
+    console.log(`unlinkIfLocal: could not delete ${full}: ${e.message || e}`);
   }
 }
 
@@ -87,7 +88,7 @@ export async function getAllItems(req, res) {
       },
     });
   } catch (err) {
-    logger.error('Error fetching items', err);
+    console.error('Error fetching items', err);
     res.status(500).json({ error: 'Failed to fetch items', details: err.message });
   }
 }
@@ -116,7 +117,7 @@ export async function createItem(req, res) {
   try {
     // If multipart, multer has populated req.files
     // If JSON, req.body contains fields
-    const { name, price, description, category, picture } = req.body || {};
+    const { name, price, description, category } = req.body || {};
 
     if (!name) return res.status(400).json({ error: 'Name is required' });
     if (price == null || Number.isNaN(Number(price))) return res.status(400).json({ error: 'Valid price is required' });
@@ -126,14 +127,30 @@ export async function createItem(req, res) {
     let pictures = null;
 
     if (req.files) {
-      // req.files from upload.fields()
-      if (req.files.icon && req.files.icon[0]) {
-        iconUrl = fileUrlFromFile(req.files.icon[0]);
-      }
-      if (req.files.images && Array.isArray(req.files.images) && req.files.images.length > 0) {
-        pictures = req.files.images.map(f => fileUrlFromFile(f));
-      }
+  if (req.files.icon && req.files.icon[0]) {
+    // create thumbnail from the uploaded file
+    const uploaded = req.files.icon[0]; // multer file object
+    const originalPath = path.join(uploadDiskPath, uploaded.filename);
+
+    // generate thumbnail
+    try {
+      const thumb = await makeThumbnail(originalPath, { width: 300, height: 300, quality: 80 });
+      // use thumbnail URL for the icon field
+      iconUrl = thumb.url;
+      // Optionally keep the original in pictures array:
+      // pictures = pictures || [];
+      // pictures.push(`${uploadsBaseUrl}/${uploaded.filename}`);
+    } catch (err) {
+      // If thumbnail creation fails, fall back to the original file URL
+      logger.error('Thumbnail creation failed', err);
+      iconUrl = fileUrlFromFile(uploaded);
     }
+  }
+
+  if (req.files.pictures && Array.isArray(req.files.pictures) && req.files.pictures.length > 0) {
+    pictures = req.files.pictures.map(f => fileUrlFromFile(f));
+  }
+}
 
     // legacy single picture URL (body) takes precedence only if no uploaded files
     const finalIcon = iconUrl ?? (picture ?? null);
@@ -182,23 +199,21 @@ export async function updateItem(req, res) {
     if (!item) return res.status(404).json({ error: 'Item not found' });
 
     // handle new files (multipart)
-    if (req.files) {
-      // icon replacement
-      if (req.files.icon && req.files.icon[0]) {
-        // delete old local icon if it was local
-        await unlinkIfLocal(item.icon);
-        updates.icon = fileUrlFromFile(req.files.icon[0]);
-      }
+    if (req.files && req.files.icon && req.files.icon[0]) {
+      // delete old local icon and its thumbnail (if local)
+      await unlinkIfLocal(item.icon); // will remove previous thumb (if starts with /static/uploads/)
+      // process new upload -> create thumbnail
+      const uploaded = req.files.icon[0];
+      const originalPath = path.join(uploadDiskPath, uploaded.filename);
 
-      // images replacement (we replace the whole array)
-      if (req.files.images && Array.isArray(req.files.images) && req.files.images.length > 0) {
-        // delete old local pictures if any
-        if (Array.isArray(item.pictures)) {
-          for (const p of item.pictures) {
-            await unlinkIfLocal(p);
-          }
-        }
-        updates.pictures = req.files.images.map(f => fileUrlFromFile(f));
+      try {
+        const thumb = await makeThumbnail(originalPath, { width: 300, height: 300, quality: 80 });
+        updates.icon = thumb.url;
+        // Optionally keep original in pictures array:
+        // updates.pictures = (item.pictures || []).concat(`${uploadsBaseUrl}/${uploaded.filename}`);
+      } catch (err) {
+        logger.error('Thumbnail creation failed', err);
+        updates.icon = fileUrlFromFile(uploaded);
       }
     }
 
