@@ -8,6 +8,7 @@ router.use(logMiddleware);
 
 router.get('/', itemsController.getAllItems);
 router.get('/:id', itemsController.getItemById);
+router.get('/category/:category', itemsController.getItemsByCategory);
 
 router.post('/', upload.fields([{ name: 'icon', maxCount: 1 }, { name: 'pictures', maxCount: 6 }]), itemsController.createItem);
 

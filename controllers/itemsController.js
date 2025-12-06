@@ -109,6 +109,73 @@ export async function getItemById(req, res) {
 }
 
 /**
+ * GET /items/category/:category
+ * Fetch items by category with pagination, search and filters
+ * Query params: page, limit, q, minPrice, maxPrice, sort
+ */
+export async function getItemsByCategory(req, res) {
+  try {
+    const { category } = req.params;
+    const {
+      page = 1,
+      limit = 20,
+      q,
+      minPrice,
+      maxPrice,
+      sort,
+    } = req.query;
+
+    const where = { category };
+
+    if (q) {
+      where[Op.or] = [
+        { name: { [Op.like]: `%${q}%` } },
+        { description: { [Op.like]: `%${q}%` } },
+      ];
+    }
+
+    if (minPrice) {
+      where.price = { ...(where.price ?? {}), [Op.gte]: Number(minPrice) };
+    }
+    if (maxPrice) {
+      where.price = { ...(where.price ?? {}), [Op.lte]: Number(maxPrice) };
+    }
+
+    // sorting (default by id ASC)
+    let order = [['id', 'ASC']];
+    if (sort) {
+      const [field, dir] = sort.split(':');
+      const direction = dir && dir.toUpperCase() === 'DESC' ? 'DESC' : 'ASC';
+      order = [[field, direction]];
+    }
+
+    const offset = (Math.max(Number(page), 1) - 1) * Number(limit);
+
+    const { rows: items, count: total } = await Item.findAndCountAll({
+      where,
+      order,
+      limit: Number(limit),
+      offset,
+    });
+
+    res.status(200).json({
+      data: items,
+      meta: {
+        total,
+        page: Number(page),
+        limit: Number(limit),
+        pages: Math.ceil(total / Number(limit)),
+      },
+    });
+  } catch (err) {
+    logger.error('Error fetching items by category', err);
+    res.status(500).json({ error: 'Failed to fetch items', details: err.message });
+  }
+}
+
+
+
+/**
  * POST /items
  * Accepts JSON or multipart/form-data (with files `icon` and `images`)
  * Body: { name, price, description?, category?, picture? }  // picture optional legacy field
@@ -305,4 +372,5 @@ export default {
   updateItem,
   deleteItem,
   adjustItemStock,
+  getItemsByCategory,
 };
