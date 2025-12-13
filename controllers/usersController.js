@@ -2,10 +2,17 @@ import { verify } from 'crypto';
 import sendEmail from '../logging/mail.js';
 import {User, Inventory, Cart} from '../models/index.js';
 import bcrypt from 'bcrypt';
+import { send } from 'process';
 
 // Registrierung
 async function registerUser(req, res) {
   try {
+    //Check if user already exists
+    const existingUser = await User.findOne({ where: { email: req.body.email } });
+    if (existingUser) {
+      return  res.status(408).json({ error: 'Email is already registered' });
+    }
+
     const { username, email, password, firstName, lastName, birthday, role } = req.body;
     console.log(req.body);
     console.log(username, email, password, firstName, lastName, birthday);
@@ -70,6 +77,7 @@ async function verifyUser(req, res) {
 // Login
 async function loginUser(req, res) {
   try {
+
     const { email, username, password } = req.body;
     let user;
     if (!email) {
@@ -80,6 +88,16 @@ async function loginUser(req, res) {
     if (!user) return res.status(404).json({ error: 'User not found' });
     const match = await bcrypt.compare(password, user.password_hash);
     if (!match) return res.status(401).json({ error: 'Invalid password' });
+
+    //Check if user is verified
+    if (!user.verified) {
+      sendEmail(
+        'Verify your account',
+        `Your verification code is: ${user.verification_code}`,
+        user.email, 'Eraswap Support'
+      );
+      return res.status(409).json({ error: 'User not verified. Please check your email for the verification code.' });
+    }
 
     res.status(200).json({ message: 'Login successful', user });
   } catch (err) {
