@@ -1,3 +1,4 @@
+import { sendEmail } from '../logging/mail.js';
 import {User, Inventory, Cart} from '../models/index.js';
 import bcrypt from 'bcrypt';
 
@@ -23,11 +24,27 @@ async function registerUser(req, res) {
     await Inventory.create({ user_id: newUser.id });
     await Cart.create({ user_id: newUser.id });
 
+    const code = generate5DigitCode();
+    // Here you would typically save the verification code to the database associated with the user
+    newUser.verification_code = code;
+    await newUser.save();
+    
+    // Send verification email
+    await sendEmail(
+      'Verify your account',
+      `Your verification code is: ${code}`,
+      newUser.email, 'Eraswap Support'
+    );
+
     res.status(201).json(newUser);
   } catch (err) {
     console.error('Registration error:', err);
     res.status(400).json({ error: err.message });
   }
+}
+
+function generate5DigitCode() {
+  return Math.floor(10000 + Math.random() * 90000).toString();
 }
 
 // Login
@@ -97,10 +114,73 @@ async function deleteUserAccount(req, res) {
    }
 }
 
+async function getUserCoins(req, res) {
+    try {
+        const { userid } = req.params;
+        const user = await User.findOne({ where: { id: userid } });
+        if (!user) return res.status(404).json({ error: 'User not found' });
+        res.status(200).json({ coins: user.coins });
+    } catch (err) {
+        console.error('Get user coins error:', err);
+        res.status(500).json({ error: err.message });
+    }
+}
+
+async function addUserCoins(req, res) {
+    try {
+        const { userid } = req.params;
+        const { amount } = req.body;
+        const user = await User.findOne({ where: { id: userid } });
+        if (!user) return res.status(404).json({ error: 'User not found' });
+        user.coins += amount;
+        await user.save();
+        res.status(200).json({ coins: user.coins });
+    } catch (err) {
+        console.error('Add user coins error:', err);
+        res.status(500).json({ error: err.message });
+    }
+}
+
+async function getUserLevel(req, res) {
+    try {
+        const { userid } = req.params;
+        const user = await User.findOne({ where: { id: userid } });
+        if (!user) return res.status(404).json({ error: 'User not found' });
+        res.status(200).json({ level: user.level });
+    } catch (err) {
+        console.error('Get user level error:', err);
+        res.status(500).json({ error: err.message });
+    }
+}
+
+async function addUserExp(req, res) {
+    try {
+        const { userid } = req.params;
+        const { amount } = req.body;
+        const user = await User.findOne({ where: { id: userid } });
+        if (!user) return res.status(404).json({  error: 'User not found' });
+        user.exp += amount;
+        // Level up logic (example: every 100 exp = level up)
+        while (user.exp >= 100) {
+            user.level += 1;
+            user.exp -= 100;
+        }
+        await user.save();
+        res.status(200).json({ level: user.level, exp: user.exp });
+    } catch (err) {
+        console.error('Add user exp error:', err);
+        res.status(500).json({ error: err.message });
+    }
+}
+
 export default {
     registerUser,
     loginUser,
     getUserProfile,
     updateUserProfile,
-    deleteUserAccount
+    deleteUserAccount,
+    getUserCoins,
+    addUserCoins,
+    getUserLevel,
+    addUserExp
 };

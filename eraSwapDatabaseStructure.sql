@@ -18,8 +18,13 @@ CREATE TABLE users (
     firstname VARCHAR(50),
     lastname VARCHAR(50),
     email VARCHAR(100) NOT NULL UNIQUE,
+    verified BOOLEAN DEFAULT FALSE,
+    verification_code VARCHAR(100),
     password_hash VARCHAR(255) NOT NULL,
     birthday DATE,
+    coins INT DEFAULT 0,
+    "level" INT DEFAULT 1,
+    exp INT DEFAULT 0,
     role VARCHAR(50) NOT NULL DEFAULT 'user',
     joined_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

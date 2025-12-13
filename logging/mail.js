@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 
-function sendEmail(subject, text, toEmail = "l.bauscher@gmx.de", fromEmail = "Adventskalender") {
+function sendEmail(subject, text, toEmail, fromEmail = "Eraswap Support") {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {

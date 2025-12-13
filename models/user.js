@@ -19,6 +19,14 @@ const User = sequelize.define('User', {
       isEmail: true,
     },
   },
+  verified: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
+  verification_code: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   password_hash: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -34,6 +42,18 @@ const User = sequelize.define('User', {
   birthday: {
     type: DataTypes.DATEONLY,
     allowNull: true,
+  },
+  coins: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
+  },
+  level: {
+    type: DataTypes.INTEGER,
+    defaultValue: 1,
+  },
+  exp: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
   },
   role: {
     type: DataTypes.STRING,
