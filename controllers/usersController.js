@@ -86,9 +86,12 @@ async function loginUser(req, res) {
     } else {
         user = await User.findOne({ where: { email } });
     }
-    if (!user) return res.status(404).json({ error: 'User not found' });
+    if (!user) { 
+      console.log('User not found for login:', email || username);
+      return res.status(404).json({ error: 'User not found' });
+    }
     const match = await bcrypt.compare(password, user.password_hash);
-    if (!match) return res.status(401).json({ error: 'Invalid password' });
+    if (!match) {console.log("Invalid Password");  return res.status(401).json({ error: 'Invalid password' });}
 
     //Check if user is verified
     if (!user.verified) {
