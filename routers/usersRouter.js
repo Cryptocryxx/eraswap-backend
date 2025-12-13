@@ -9,7 +9,7 @@ router.use(logMiddleware);
 
 router.post("/register", usersController.registerUser);
 router.get("/verify", usersController.verifyUser);
-router.get("/login", usersController.loginUser);
+router.post("/login", usersController.loginUser);
 router.get("/profile/:userid", usersController.getUserProfile);
 router.put("/profile/:userid", usersController.updateUserProfile);
 router.delete("/:userid", usersController.deleteUserAccount);
