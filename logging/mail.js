@@ -23,7 +23,5 @@ function sendEmail(subject, text, toEmail, fromEmail = "Eraswap Support") {
     return "Nachricht erfolgreich gesendet!"
 }
 
-module.exports = {
-    sendEmail
-}
+export default sendEmail;
 
