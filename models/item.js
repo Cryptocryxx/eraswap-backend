@@ -11,6 +11,13 @@ const Item = sequelize.define('item', {
     type: DataTypes.TEXT,
     allowNull: true,
   },
+  weight: {
+    type: DataTypes.DECIMAL(10, 2),
+    allowNull: true,
+    validate: {
+      min: 0,
+    },
+  },
   price: {
     type: DataTypes.FLOAT,
     allowNull: false,

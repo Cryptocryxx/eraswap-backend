@@ -63,6 +63,7 @@ CREATE TABLE items (
     pictures JSON,
     price DECIMAL(10,2) NOT NULL,
     description TEXT,
+    weight DECIMAL(10,2),
     category VARCHAR(50) DEFAULT 'Furniture',
     order_id INT NULL,
 
