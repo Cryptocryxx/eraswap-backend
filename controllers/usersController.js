@@ -3,6 +3,7 @@ import sendEmail from '../logging/mail.js';
 import {User, Inventory, Cart} from '../models/index.js';
 import bcrypt from 'bcrypt';
 import { send } from 'process';
+import { Console } from 'console';
 
 // Registrierung
 async function registerUser(req, res) {
@@ -96,6 +97,7 @@ async function loginUser(req, res) {
         `Your verification code is: ${user.verification_code}`,
         user.email, 'Eraswap Support'
       );
+      console.log('User not verified, verification email resent.');
       return res.status(409).json({ error: 'User not verified. Please check your email for the verification code.' });
     }
 
