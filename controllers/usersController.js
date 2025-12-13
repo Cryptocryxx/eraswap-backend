@@ -96,6 +96,9 @@ async function loginUser(req, res) {
 
     //Check if user is verified
     if (!user.verified) {
+      const code = generate5DigitCode();
+      user.verification_code = code;
+      await user.save();
       sendEmail(
         'Verify your account',
         `Your verification code is: ${user.verification_code}`,
