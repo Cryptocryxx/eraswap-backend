@@ -58,7 +58,8 @@ function generate5DigitCode() {
 
 async function verifyUser(req, res) {
   try {
-    const { email, code } = req.query;
+    console.log('Verification request received:', req.body);
+    const { email, code } = req.body;
     const user = await User.findOne({ where: { email } });
     if (!user) return res.status(404).json({ error: 'User not found' });
     if (user.verification_code === code) {
