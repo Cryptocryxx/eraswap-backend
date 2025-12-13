@@ -8,7 +8,7 @@ const router = express.Router();
 router.use(logMiddleware);
 
 router.post("/register", usersController.registerUser);
-router.get("/verify", usersController.verifyUser);
+router.put("/verify", usersController.verifyUser);
 router.post("/login", usersController.loginUser);
 router.get("/profile/:userid", usersController.getUserProfile);
 router.put("/profile/:userid", usersController.updateUserProfile);
