@@ -78,7 +78,7 @@ async function verifyUser(req, res) {
 // Login
 async function loginUser(req, res) {
   try {
-
+    console.log('Login request received:', req.body);
     const { email, username, password } = req.body;
     let user;
     if (!email) {
