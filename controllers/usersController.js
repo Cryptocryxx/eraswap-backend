@@ -1,4 +1,5 @@
-import { sendEmail } from '../logging/mail.js';
+import { verify } from 'crypto';
+import sendEmail from '../logging/mail.js';
 import {User, Inventory, Cart} from '../models/index.js';
 import bcrypt from 'bcrypt';
 
@@ -45,6 +46,25 @@ async function registerUser(req, res) {
 
 function generate5DigitCode() {
   return Math.floor(10000 + Math.random() * 90000).toString();
+}
+
+async function verifyUser(req, res) {
+  try {
+    const { email, code } = req.query;
+    const user = await User.findOne({ where: { email } });
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    if (user.verification_code === code) {
+      user.verified = true;
+      user.verification_code = null; // Clear the code after verification
+      await user.save();
+      res.status(200).json({ message: 'User verified successfully' });
+    } else {
+      res.status(400).json({ error: 'Invalid verification code' });
+    }
+  } catch (err) {
+    console.error('Verification error:', err);
+    res.status(500).json({ error: err.message });
+  }
 }
 
 // Login
@@ -182,5 +202,6 @@ export default {
     getUserCoins,
     addUserCoins,
     getUserLevel,
-    addUserExp
+    addUserExp,
+    verifyUser
 };

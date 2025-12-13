@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 
 function sendEmail(subject, text, toEmail, fromEmail = "Eraswap Support") {
     const transporter = nodemailer.createTransport({
