@@ -105,7 +105,7 @@ async function loginUser(req, res) {
         user.email, 'Eraswap Support'
       );
       console.log('User not verified, verification email resent.');
-      return res.status(409).json({ error: 'User not verified. Please check your email for the verification code.' });
+      return res.status(409).json({ error: 'User not verified. Please check your email for the verification code.', email: user.email });
     }
 
     res.status(200).json({ message: 'Login successful', user });
