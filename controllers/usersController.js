@@ -127,6 +127,19 @@ async function getUserProfile(req, res) {
    }
 }
 
+async function getUserListings(req, res) {
+    try {
+        const { userid } = req.params;
+        const user = await User.findOne({ where: { id: userid }, include: ['Items'] });
+        if (!user) return res.status(404).json({ error: 'User not found' });
+        res.status(200).json(user.Items);
+    } catch (err) {
+        console.error('Get user listings error:', err);
+        res.status(500).json({ error: err.message });
+    }
+}
+
+
 // Benutzerprofil aktualisieren
 async function updateUserProfile(req, res) {
     try {
@@ -230,5 +243,6 @@ export default {
     addUserCoins,
     getUserLevel,
     addUserExp,
-    verifyUser
+    verifyUser,
+    getUserListings,
 };
