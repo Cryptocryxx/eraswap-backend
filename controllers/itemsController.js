@@ -230,6 +230,7 @@ export async function createItem(req, res) {
       category: category ?? null,
       icon: finalIcon,
       pictures: finalPictures,
+      listedbyid: listedbyid,
     });
 
     logger.info(`Item created: id=${newItem.id}`);

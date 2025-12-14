@@ -66,8 +66,11 @@ CREATE TABLE items (
     category VARCHAR(50) DEFAULT 'Furniture',
     order_id INT NULL,
     weight DECIMAL(10,2) DEFAULT 0,
-    FOREIGN KEY (order_id) REFERENCES orders(id)
-        ON DELETE SET NULL
+    listedbyid INT NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(id) 
+        ON DELETE SET NULL,
+    FOREIGN KEY (listedbyid) REFERENCES users(id)
+        ON DELETE CASCADE
 );
 
 -- ================================
