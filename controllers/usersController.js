@@ -1,6 +1,6 @@
 import { verify } from 'crypto';
 import sendEmail from '../logging/mail.js';
-import {User, Inventory, Cart} from '../models/index.js';
+import {User, Inventory, Cart, Item} from '../models/index.js';
 import bcrypt from 'bcrypt';
 import { send } from 'process';
 import { Console } from 'console';
@@ -130,9 +130,12 @@ async function getUserProfile(req, res) {
 async function getUserListings(req, res) {
     try {
         const { userid } = req.params;
-        const user = await User.findOne({ where: { id: userid }, include: ['Items'] });
-        if (!user) return res.status(404).json({ error: 'User not found' });
-        res.status(200).json(user.Items);
+    // Return all items where the foreign key `listedbyid` matches the user id
+    const items = await Item.findAll({ where: { listedbyid: userid } });
+    // If you want to ensure the user exists, uncomment the block below
+    // const user = await User.findOne({ where: { id: userid } });
+    // if (!user) return res.status(404).json({ error: 'User not found' });
+    res.status(200).json(items);
     } catch (err) {
         console.error('Get user listings error:', err);
         res.status(500).json({ error: err.message });
