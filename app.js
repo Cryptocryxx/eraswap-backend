@@ -16,6 +16,7 @@ db.getPool(); // Initialize the pool
 // Middleware
 app.use(cors({ origin: true }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 //app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/users', usersRouter);
