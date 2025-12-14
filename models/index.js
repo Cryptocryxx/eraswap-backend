@@ -33,6 +33,7 @@ Item.belongsToMany(Cart, {
 
 // ---- Users <-> Inventory ----
 User.hasMany(Inventory, { foreignKey: 'user_id', onDelete: 'CASCADE' });
+User.hasMany(Item, { foreignKey: 'listedbyid', onDelete: 'CASCADE' });
 Inventory.belongsTo(User, { foreignKey: 'user_id', onDelete: 'CASCADE' });
 
 // ---- Inventory <-> Items (m:n via InventoryItem) ----
@@ -46,6 +47,8 @@ Item.belongsToMany(Inventory, {
   foreignKey: 'item_id',
   otherKey: 'inventory_id',
 });
+
+Item.belongsTo(User, { foreignKey: 'listedbyid', onDelete: 'CASCADE' });
 
 // Export models for convenience
 export {

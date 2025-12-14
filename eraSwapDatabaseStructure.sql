@@ -63,10 +63,9 @@ CREATE TABLE items (
     pictures JSON,
     price DECIMAL(10,2) NOT NULL,
     description TEXT,
-    weight DECIMAL(10,2),
     category VARCHAR(50) DEFAULT 'Furniture',
     order_id INT NULL,
-
+    weight DECIMAL(10,2) DEFAULT 0,
     FOREIGN KEY (order_id) REFERENCES orders(id)
         ON DELETE SET NULL
 );

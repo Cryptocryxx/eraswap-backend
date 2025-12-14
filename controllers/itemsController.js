@@ -184,7 +184,7 @@ export async function createItem(req, res) {
   try {
     // If multipart, multer has populated req.files
     // If JSON, req.body contains fields
-    const { name, price, description, category } = req.body || {};
+    const { name, price, description, category, listedbyid } = req.body || {};
 
     if (!name) return res.status(400).json({ error: 'Name is required' });
     if (price == null || Number.isNaN(Number(price))) return res.status(400).json({ error: 'Valid price is required' });

@@ -10,11 +10,11 @@ router.get('/', itemsController.getAllItems);
 router.get('/:id', itemsController.getItemById);
 router.get('/category/:category', itemsController.getItemsByCategory);
 
-router.post('/', upload.fields([{ name: 'icon', maxCount: 1 }, { name: 'pictures', maxCount: 6 }]), itemsController.createItem);
+router.post('/', upload.fields([{ name: 'icon', maxCount: 1 }, { name: 'pictures', maxCount: 10 }]), itemsController.createItem);
 
 // update: same
-router.put('/:id', upload.fields([{ name: 'icon', maxCount: 1 }, { name: 'pictures', maxCount: 6 }]), itemsController.updateItem);
-router.patch('/:id', upload.fields([{ name: 'icon', maxCount: 1 }, { name: 'pictures', maxCount: 6 }]), itemsController.updateItem);
+router.put('/:id', upload.fields([{ name: 'icon', maxCount: 1 }, { name: 'pictures', maxCount: 10 }]), itemsController.updateItem);
+router.patch('/:id', upload.fields([{ name: 'icon', maxCount: 1 }, { name: 'pictures', maxCount: 10 }]), itemsController.updateItem);
 
 
 router.delete('/:id', itemsController.deleteItem);
