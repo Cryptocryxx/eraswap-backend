@@ -216,8 +216,6 @@ async function getUserLevel(req, res) {
     }
 }
 
-import { calculateLevelFromTotalExp, getXpRequiredForLevel } from '../utils/leveling.js';
-
 async function addUserExp(req, res) {
   try {
     const { userid } = req.params;
