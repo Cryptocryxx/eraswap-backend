@@ -125,7 +125,8 @@ export async function getItemsByCategory(req, res) {
       sort,
     } = req.query;
 
-    const where = { category };
+    // Only return items that are not attached to an order (available items)
+    const where = { category, order_id: null };
 
     if (q) {
       where[Op.or] = [
