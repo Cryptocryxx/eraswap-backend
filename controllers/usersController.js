@@ -302,8 +302,13 @@ async function getOrderEmmissions(req, res) {
         console.log('getOrderEmmissions: received request for userid=', userid, 'orderid=', orderid);
         const user = await User.findOne({ where: { id: userid } });
         if (!user) return res.status(404).json({ error: 'User not found' });
-        const order = await user.getOrder(orderid);
-        if (!order) return res.status(404).json({ error: 'Order not found' });
+        // `User.hasMany(Order)` generates `getOrders` (plural). Use it with a where-clause
+        const orders = await user.getOrders({ where: { id: orderid }, include: [{ model: Item }] }) || [];
+        const order = orders[0];
+        if (!order) {
+          console.log(`getOrderEmmissions: order ${orderid} not found for user ${userid}`);
+          return res.status(404).json({ error: 'Order not found' });
+        }
         // Emmissions get calculated as all items.weight from the specific order * 2
         const items = order.Items || order.items || [];
         console.log(`getOrderEmmissions: loaded ${items.length} items for order ${orderid}`);
