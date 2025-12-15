@@ -26,5 +26,6 @@ router.post("/:userid/exp/set", usersController.setUserExp);
 router.post("/:userid/level/set", usersController.setUserLevel);
 
 router.get("/:userid/emmissions", usersController.getUserEmmissions);
+router.get("/:userid/emmissions/:orderid", usersController.getOrderEmmissions);
 
 export default router;
