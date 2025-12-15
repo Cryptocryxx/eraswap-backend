@@ -2,6 +2,7 @@
 import { Cart, CartItem, Item, User } from '../models/index.js';
 import logger from '../logging/logger.js';
 import { sequelize } from '../databases/sequelize.js';
+import { get } from 'http';
 
 /**
  * POST /api/carts
@@ -139,4 +140,5 @@ export default {
   addItemToCart,
   removeItemFromCart,
   clearCart,
+  getCartTotalPrice,
 };
