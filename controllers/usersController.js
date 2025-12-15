@@ -216,34 +216,75 @@ async function getUserLevel(req, res) {
     }
 }
 
+import { calculateLevelFromTotalExp, getXpRequiredForLevel } from '../utils/leveling.js';
+
 async function addUserExp(req, res) {
-    try {
-        const { userid } = req.params;
-        const { amount } = req.body;
+  try {
+    const { userid } = req.params;
+    const { amount } = req.body;
 
-        if (typeof amount !== 'number' || amount <= 0) {
-            return res.status(400).json({ error: 'Invalid exp amount' });
-        }
-
-        const user = await User.findOne({ where: { id: userid } });
-        if (!user) {
-            return res.status(404).json({ error: 'User not found' });
-        }
-
-        // ✅ Store TOTAL EXP ONLY
-        user.exp += amount;
-
-        await user.save();
-
-        res.status(200).json({
-            totalExp: user.exp,
-            level: user.level // optional legacy
-        });
-    } catch (err) {
-        console.error('Add user exp error:', err);
-        res.status(500).json({ error: err.message });
+    if (typeof amount !== 'number' || amount <= 0) {
+      return res.status(400).json({ error: 'Invalid exp amount' });
     }
+
+    const user = await User.findOne({ where: { id: userid } });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Add EXP
+    user.exp += amount;
+
+    // Calculate correct level from total EXP
+    const oldLevel = user.level;
+    const newLevel = calculateLevelFromTotalExp(user.exp);
+
+    if (newLevel > oldLevel) {
+      user.level = newLevel;
+      console.log(`User leveled up from ${oldLevel} to ${newLevel}`);
+    }
+
+    await user.save();
+
+    res.status(200).json({
+      totalExp: user.exp,
+      level: user.level,
+      leveledUp: newLevel > oldLevel,
+      nextLevelExpRequired: getXpRequiredForLevel(user.level)
+    });
+  } catch (err) {
+    console.error('Add user exp error:', err);
+    res.status(500).json({ error: err.message });
+  }
 }
+
+
+
+function getXpRequiredForLevel(level) {
+  // XP needed to go FROM this level TO next level
+  // Level 1 → 2 = 1000
+  return Math.floor(1000 * Math.pow(1.5, level - 1));
+}
+
+function calculateLevelFromTotalExp(totalExp) {
+  let level = 1;
+  let expUsed = 0;
+
+  while (true) {
+    const xpForNextLevel = getXpRequiredForLevel(level);
+    if (totalExp >= expUsed + xpForNextLevel) {
+      expUsed += xpForNextLevel;
+      level++;
+    } else {
+      break;
+    }
+  }
+
+  return level;
+}
+
+export { getXpRequiredForLevel, calculateLevelFromTotalExp };
+
 
 
 export default {
