@@ -220,21 +220,31 @@ async function addUserExp(req, res) {
     try {
         const { userid } = req.params;
         const { amount } = req.body;
-        const user = await User.findOne({ where: { id: userid } });
-        if (!user) return res.status(404).json({  error: 'User not found' });
-        user.exp += amount;
-        // Level up logic (example: every 100 exp = level up)
-        while (user.exp >= 100) {
-            user.level += 1;
-            user.exp -= 100;
+
+        if (typeof amount !== 'number' || amount <= 0) {
+            return res.status(400).json({ error: 'Invalid exp amount' });
         }
+
+        const user = await User.findOne({ where: { id: userid } });
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // ✅ Store TOTAL EXP ONLY
+        user.exp += amount;
+
         await user.save();
-        res.status(200).json({ level: user.level, exp: user.exp });
+
+        res.status(200).json({
+            totalExp: user.exp,
+            level: user.level // optional legacy
+        });
     } catch (err) {
         console.error('Add user exp error:', err);
         res.status(500).json({ error: err.message });
     }
 }
+
 
 export default {
     registerUser,
