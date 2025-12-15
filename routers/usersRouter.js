@@ -25,4 +25,6 @@ router.post("/:userid/exp", usersController.addUserExp);
 router.post("/:userid/exp/set", usersController.setUserExp);
 router.post("/:userid/level/set", usersController.setUserLevel);
 
+router.get("/:userid/emmissions", usersController.getUserEmmissions);
+
 export default router;

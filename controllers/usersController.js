@@ -260,6 +260,27 @@ async function setUserLevel(req, res) {
     } 
 }
 
+async function getUserEmmissions(req, res) {
+    try {
+        const { userid } = req.params;
+        const user = await User.findOne({ where: { id: userid } });
+        if (!user) return res.status(404).json({ error: 'User not found' });
+        // Emmissions get calculated as all items.weight from all orders by user * 2
+        const orders = await user.getOrders({ include: [{ model: Item }] });
+        let totalWeight = 0;
+        orders.forEach(order => {
+            order.Items.forEach(item => {
+                totalWeight += item.weight || 0;
+            });
+        });
+        const emmissions = totalWeight * 2; // Example calculation
+        res.status(200).json({ totalEmmissions: emmissions });
+    } catch (err) {
+        console.error('Get user emmissions error:', err);
+        res.status(500).json({ error: err.message });
+    }
+}
+
 
 
 export default {
@@ -275,5 +296,6 @@ export default {
     verifyUser,
     getUserListings,
     setUserExp,
-    setUserLevel
+    setUserLevel,
+    getUserEmmissions
 };
