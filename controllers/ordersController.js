@@ -142,9 +142,27 @@ export async function listOrders(req, res) {
   }
 }
 
+export async function getItemsByUser(req, res) {
+  try {
+    const { userId } = req.params;
+    const orders = await Order.findAll({ where: { user_id: userId }, include: [{ model: Item }], order: [['timestamp','DESC']] });
+    const items = [];
+    for (const order of orders) {
+      for (const item of order.Items) {
+        items.push(item);
+      }
+    }
+    res.status(200).json(items);
+  } catch (err) {
+    logger.error('Get items by user error:', err);
+    res.status(500).json({ error: err.message });
+  }
+}
+
 export default {
   createOrderFromCart,
   getOrder,
   listOrders,
   getOrdersByUser,
+  getItemsByUser
 };

@@ -13,6 +13,8 @@ router.post('/from-cart/:cartId', ordersController.createOrderFromCart);
 router.get('/:orderId', ordersController.getOrder);
 router.get('/user/:userId', ordersController.getOrdersByUser);
 
+router.get("/user/:userId/items", ordersController.getItemsByUser);
+
 // List orders (optionally filter by ?userId=)
 router.get('/', ordersController.listOrders);
 
