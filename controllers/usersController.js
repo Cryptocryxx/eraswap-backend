@@ -263,18 +263,33 @@ async function setUserLevel(req, res) {
 async function getUserEmmissions(req, res) {
     try {
         const { userid } = req.params;
+    console.log('getUserEmmissions: received request for userid=', userid);
         const user = await User.findOne({ where: { id: userid } });
         if (!user) return res.status(404).json({ error: 'User not found' });
         // Emmissions get calculated as all items.weight from all orders by user * 2
-        const orders = await user.getOrders({ include: [{ model: Item }] });
-        let totalWeight = 0;
-        orders.forEach(order => {
-            order.Items.forEach(item => {
-                totalWeight += item.weight || 0;
-            });
-        });
-        const emmissions = totalWeight * 2; // Example calculation
-        res.status(200).json({ totalEmmissions: emmissions });
+    const orders = await user.getOrders({ include: [{ model: Item }] }) || [];
+    console.log(`getUserEmmissions: loaded ${orders.length} orders for user ${userid}`);
+
+    // Sum weights defensively: orders or items may be missing/null
+    const totalWeight = orders.reduce((orderAcc, order) => {
+      const items = order.Items || order.items || [];
+      if (!items || items.length === 0) {
+        console.log(`getUserEmmissions: order ${order.id} has no items`);
+      } else {
+        console.log(`getUserEmmissions: order ${order.id} has ${items.length} items`);
+      }
+      const itemsWeight = items.reduce((itAcc, it) => {
+        const w = it && !Number.isNaN(Number(it.weight)) ? Number(it.weight) : 0;
+        if (!it) console.log('getUserEmmissions: encountered null/undefined item in order', order.id);
+        return itAcc + w;
+      }, 0);
+      return orderAcc + itemsWeight;
+    }, 0);
+
+    // Example calculation: 2x weight -> round to 2 decimals
+    const emmissions = Math.round((totalWeight * 2 + Number.EPSILON) * 100) / 100;
+    console.log(`getUserEmmissions: totalWeight=${totalWeight}, emmissions=${emmissions}`);
+    res.status(200).json({ totalEmmissions: emmissions });
     } catch (err) {
         console.error('Get user emmissions error:', err);
         res.status(500).json({ error: err.message });
