@@ -2,8 +2,6 @@ import { verify } from 'crypto';
 import sendEmail from '../logging/mail.js';
 import {User, Inventory, Cart, Item} from '../models/index.js';
 import bcrypt from 'bcrypt';
-import { send } from 'process';
-import { Console } from 'console';
 
 // Registrierung
 async function registerUser(req, res) {
@@ -277,7 +275,6 @@ function calculateLevelFromTotalExp(totalExp) {
       break;
     }
   }
-
   return level;
 }
 

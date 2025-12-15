@@ -99,6 +99,26 @@ export async function removeItemFromCart(req, res) {
 }
 
 /**
+ * GET /api/carts/:cartId/total-price
+ * Calculates the total price of all items in the cart
+ */
+export async function getCartTotalPrice(req, res) {
+  try {
+    const { cartId } = req.params;
+    const cart = await Cart.findByPk(cartId, {
+      include: [{ model: Item }],
+    });
+    if (!cart) return res.status(404).json({ error: 'Cart not found' });
+
+    const totalPrice = cart.Items.reduce((sum, item) => sum + item.price, 0);
+    res.status(200).json({ totalPrice });
+  } catch (err) {
+    logger.error('Get cart total price error:', err);
+    res.status(500).json({ error: err.message });
+  }
+}
+
+/**
  * DELETE /api/carts/:cartId
  * Clears the cart: deletes all cart_items rows for the cart
  */

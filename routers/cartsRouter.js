@@ -12,6 +12,9 @@ router.post('/', cartsController.createCart);
 // Cart operations
 router.get('/:cartId', cartsController.getCart);
 
+// Get Total Price of Cart
+router.get('/:cartId/total-price', cartsController.getCartTotalPrice);
+
 // Add item to cart
 router.post('/:cartId/items', cartsController.addItemToCart);
 
