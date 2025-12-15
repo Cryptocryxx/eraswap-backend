@@ -16,10 +16,13 @@ router.get("/profile/:userid", usersController.getUserProfile);
 router.get("/listings/:userid", usersController.getUserListings);
 
 router.put("/profile/:userid", usersController.updateUserProfile);
+
 router.delete("/:userid", usersController.deleteUserAccount);
 router.get("/:userid/coins", usersController.getUserCoins);
 router.post("/:userid/coins", usersController.addUserCoins);
 router.get("/:userid/level", usersController.getUserLevel);
 router.post("/:userid/exp", usersController.addUserExp);
+router.post("/:userid/exp/set", usersController.setUserExp);
+router.post("/:userid/level/set", usersController.setUserLevel);
 
 export default router;

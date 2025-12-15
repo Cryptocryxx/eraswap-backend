@@ -39,6 +39,23 @@ export async function createOrderFromCart(req, res) {
       return res.status(500).json({ error: 'Some items referenced in cart_items do not exist', missing });
     }
 
+    //Reduce Coins from User upon Order Creation
+    const user = await User.findByPk(cart.user_id, { transaction: t });
+    let totalPrice = 0;
+    for (const it of items) {
+      totalPrice += it.price;
+    }
+    console.log('Total price of order:', totalPrice, 'User coins available:', user.coins);
+    if (user.coins < totalPrice) {
+      console.log('Insufficient coins for user id=', user.id);
+      await t.rollback();
+      return res.status(400).json({ error: 'Insufficient coins to complete the order' });
+    }
+    // Deduct coins
+    user.coins -= totalPrice;
+    await user.save({ transaction: t });
+    console.log('Deducted coins from user id=', user.id, 'new balance=', user.coins);
+
     // 4) create order
     let order;
     try {
@@ -78,6 +95,7 @@ export async function createOrderFromCart(req, res) {
     console.log('Transaction committed.');
 
     const fullOrder = await Order.findByPk(order.id, { include: [{ model: Item }, { model: User, attributes: ['id','username','email'] }] });
+
     return res.status(201).json(fullOrder);
   } catch (err) {
     // fallback catch
