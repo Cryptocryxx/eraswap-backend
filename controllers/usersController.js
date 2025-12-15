@@ -296,6 +296,32 @@ async function getUserEmmissions(req, res) {
     }
 }
 
+async function getOrderEmmissions(req, res) {
+    try {
+        const { userid, orderid } = req.params;
+        console.log('getOrderEmmissions: received request for userid=', userid, 'orderid=', orderid);
+        const user = await User.findOne({ where: { id: userid } });
+        if (!user) return res.status(404).json({ error: 'User not found' });
+        const order = await user.getOrder(orderid);
+        if (!order) return res.status(404).json({ error: 'Order not found' });
+        // Emmissions get calculated as all items.weight from the specific order * 2
+        const items = order.Items || order.items || [];
+        console.log(`getOrderEmmissions: loaded ${items.length} items for order ${orderid}`);
+        const totalWeight = items.reduce((itAcc, it) => {
+            const w = it && !Number.isNaN(Number(it.weight)) ? Number(it.weight) : 0;
+            if (!it) console.log('getOrderEmmissions: encountered null/undefined item in order', order.id);
+            return itAcc + w;
+        }, 0);
+        // Example calculation: 2x weight -> round to 2 decimals
+        const emmissions = Math.round((totalWeight * 2 + Number.EPSILON) * 100) / 100;
+        console.log(`getOrderEmmissions: totalWeight=${totalWeight}, emmissions=${emmissions}`);
+        res.status(200).json({ totalEmmissions: emmissions });
+    } catch (err) {
+        console.error('Get user emmissions error:', err);
+        res.status(500).json({ error: err.message });
+    }
+}
+
 
 
 export default {
@@ -312,5 +338,6 @@ export default {
     getUserListings,
     setUserExp,
     setUserLevel,
-    getUserEmmissions
+    getUserEmmissions,
+    getOrderEmmissions
 };
