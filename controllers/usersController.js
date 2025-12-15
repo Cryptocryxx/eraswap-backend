@@ -262,27 +262,6 @@ async function setUserLevel(req, res) {
 
 
 
-
-function calculateLevelFromTotalExp(totalExp) {
-  let level = 1;
-  let expUsed = 0;
-
-  while (true) {
-    const xpForNextLevel = getXpRequiredForLevel(level);
-    if (totalExp >= expUsed + xpForNextLevel) {
-      expUsed += xpForNextLevel;
-      level++;
-    } else {
-      break;
-    }
-  }
-  return level;
-}
-
-export { getXpRequiredForLevel, calculateLevelFromTotalExp };
-
-
-
 export default {
     registerUser,
     loginUser,
