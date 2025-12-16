@@ -7,6 +7,7 @@ import itemsRouter from './routers/itemsRouter.js';
 import cartsRouter from './routers/cartsRouter.js';
 import ordersRouter from './routers/ordersRouter.js';
 import inventoryRouter from './routers/inventoryRouter.js';
+import buildRouter from './routers/buildRouter.js';
 
 const app = express();
 
@@ -24,9 +25,11 @@ app.use('/api/items', itemsRouter);
 app.use('/api/carts', cartsRouter);
 app.use('/api/orders', ordersRouter);
 app.use('/api/inventory', inventoryRouter);
+app.use('/api/build', buildRouter);
 
 // Serve static files (optional)
 app.use('/static/uploads', express.static(path.join(process.cwd(), 'uploads', 'items')));
+app.use('/static/builds', express.static(path.join(process.cwd(), 'static', "builds")));
 // app.use('/static', express.static(path.join(process.cwd(), 'static')));
 // Start server
 app.listen(PORT, () => {
