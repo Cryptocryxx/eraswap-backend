@@ -1,29 +1,23 @@
 import nodemailer from 'nodemailer';
 
-async function sendEmail(subject, text, toEmail, fromEmail = "Eraswap Support") {
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'lori.bauscher@gmail.com',
-          pass: "gyyb ewkg briz nkpd"
-      }
-    });
-    // E-Mail senden
-    transporter.sendMail({
-      from: `"${fromEmail}" <lori.bauscher@gmail.com>`, // Absender
-      to: toEmail, // Empfänger
-      subject: subject,
-      text: text, // Nachricht im Textformat
-      html: `<h1>${text}</h1>` // Nachricht im HTML-Format
-    }, (error, info) => {
-      if (error) {
-        console.error('Fehler beim Senden der E-Mail:', error);
-        throw error
-      }
-    });
-    console.log('E-Mail wurde erfolgreich gesendet');
-    return "Nachricht erfolgreich gesendet!"
+async function sendEmail(subject, html, toEmail, fromEmail = "Eraswap Support") {
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'lori.bauscher@gmail.com',
+      pass: 'gyyb ewkg briz nkpd'
+    }
+  });
+
+  return transporter.sendMail({
+    from: `"${fromEmail}" <lori.bauscher@gmail.com>`,
+    to: toEmail,
+    subject: subject,
+    text: 'Please verify your EraSwap account.',
+    html: html
+  });
 }
+
 
 export default sendEmail;
 
