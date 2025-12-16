@@ -21,6 +21,7 @@ async function sendEmail(subject, text, toEmail, fromEmail = "Eraswap Support") 
         throw error
       }
     });
+    console.log('E-Mail wurde erfolgreich gesendet');
     return "Nachricht erfolgreich gesendet!"
 }
 
