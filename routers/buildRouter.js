@@ -7,12 +7,12 @@ const router = express.Router();
 router.use(logMiddleware);
 
 router.get('/windows', (req, res) => {
-  const filePath = path.join(process.cwd(), 'static', 'EraSwapWindows.zip');
+  const filePath = path.join(process.cwd(), 'uploads', "builds", 'EraSwapWindows.zip');
   res.download(filePath, 'EraSwapWindows.zip');
 });
 
 router.get('/mac', (req, res) => {
-  const filePath = path.join(process.cwd(), 'static', 'EraSwap.zip');
+  const filePath = path.join(process.cwd(), 'uploads', "builds", 'EraSwap.zip');
   res.download(filePath, 'EraSwap.zip');
 });
 
