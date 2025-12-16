@@ -151,7 +151,7 @@ async function registerUser(req, res) {
     await sendEmail(
       'Verify your account',
       htmlEmail,
-      newUser.email, 'Eraswap Support'
+      newUser.email, 'Eraswap'
     );
 
     res.status(201).json(newUser);
