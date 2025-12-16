@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-function sendEmail(subject, text, toEmail, fromEmail = "Eraswap Support") {
+async function sendEmail(subject, text, toEmail, fromEmail = "Eraswap Support") {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -17,6 +17,7 @@ function sendEmail(subject, text, toEmail, fromEmail = "Eraswap Support") {
       html: `<h1>${text}</h1>` // Nachricht im HTML-Format
     }, (error, info) => {
       if (error) {
+        console.error('Fehler beim Senden der E-Mail:', error);
         throw error
       }
     });
