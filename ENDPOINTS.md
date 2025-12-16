@@ -33,6 +33,7 @@ Files: `routers/itemsRouter.js`, `controllers/itemsController.js`, `models/item.
   - URL params: `category`
   - Query params: same pagination/filtering as GET /
   - Success: 200 → `{ data: [Item], meta: {...} }`
+  - Notes: This endpoint only returns items that are not attached to an order (items with `order_id = null`).
 
 - **POST /**
   - Path: `/items`
@@ -169,6 +170,12 @@ Files: `routers/ordersRouter.js`, `controllers/ordersController.js`, `models/ord
   - Path: `/orders/user/:userId`
   - Method: GET
   - Success: 200 → array of Orders for the user
+
+- **GET /user/:userId/items**
+  - Path: `/orders/user/:userId/items`
+  - Method: GET
+  - Description: Returns all `Item` rows belonging to orders placed by the given user. Implementation first collects the user's order IDs, then returns items where `order_id` is in that set.
+  - Success: 200 → array of Item objects (empty array if user has no orders)
 
 - **GET /**
   - Path: `/orders`

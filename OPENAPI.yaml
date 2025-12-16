@@ -1,0 +1,766 @@
+openapi: 3.0.3
+info:
+  title: Eraswap Backend API
+  version: 1.0.0
+  description: API specification for the eraswap-backend project (subset of endpoints mounted in `app.js`).
+servers:
+  - url: http://localhost:3005
+    description: Local development server
+
+paths:
+  /api/items:
+    get:
+      summary: List items
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Page number
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: Items per page
+        - in: query
+          name: q
+          schema:
+            type: string
+          description: Search query
+        - in: query
+          name: category
+          schema:
+            type: string
+        - in: query
+          name: minPrice
+          schema:
+            type: number
+        - in: query
+          name: maxPrice
+          schema:
+            type: number
+        - in: query
+          name: sort
+          schema:
+            type: string
+          description: Sort e.g. price:asc
+      responses:
+        '200':
+          description: Paginated items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemsPage'
+
+    post:
+      summary: Create item (supports file upload)
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                price:
+                  type: number
+                description:
+                  type: string
+                category:
+                  type: string
+                listedbyid:
+                  type: integer
+                icon:
+                  type: string
+                  format: binary
+                pictures:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+      responses:
+        '201':
+          description: Created item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+
+  /api/items/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Get item by id
+      responses:
+        '200':
+          description: Item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      summary: Replace or update item (multipart supported)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ItemUpdate'
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                price:
+                  type: number
+                icon:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Updated item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+
+    patch:
+      summary: Partial update for item
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ItemUpdate'
+      responses:
+        '200':
+          description: Updated item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+
+    delete:
+      summary: Delete item
+      responses:
+        '200':
+          description: Item deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+  /api/items/category/{category}:
+    get:
+      summary: Get items by category (available only)
+      description: Returns items in the category that are not attached to an order (`order_id = null`).
+      parameters:
+        - in: path
+          name: category
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Paginated items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemsPage'
+
+  /api/items/{id}/stock:
+    patch:
+      summary: Adjust stock/quantity for item
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                delta:
+                  type: number
+      responses:
+        '200':
+          description: Updated item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+
+  /api/users/register:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+      responses:
+        '201':
+          description: Created user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /api/users/verify:
+    put:
+      summary: Verify a user's email with code
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                code:
+                  type: string
+      responses:
+        '200':
+          description: Verified
+
+  /api/users/login:
+    post:
+      summary: Login (email or username)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  user:
+                    $ref: '#/components/schemas/User'
+
+  /api/users/profile/{userid}:
+    parameters:
+      - in: path
+        name: userid
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Get user profile
+      responses:
+        '200':
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    put:
+      summary: Update user profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        '200':
+          description: Updated user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /api/users/{userid}:
+    parameters:
+      - in: path
+        name: userid
+        required: true
+        schema:
+          type: integer
+    delete:
+      summary: Delete user
+      responses:
+        '200':
+          description: User deleted
+
+  /api/users/{userid}/coins:
+    get:
+      summary: Get user coins
+      parameters:
+        - in: path
+          name: userid
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Coins
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  coins:
+                    type: integer
+    post:
+      summary: Add coins to user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+      responses:
+        '200':
+          description: Updated coins
+
+  /api/users/{userid}/level:
+    get:
+      summary: Get user level
+      responses:
+        '200':
+          description: Level
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  level:
+                    type: integer
+
+  /api/users/{userid}/exp:
+    post:
+      summary: Add experience points
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+      responses:
+        '200':
+          description: Updated exp/level
+
+  /api/users/{userid}/exp/set:
+    post:
+      summary: Set user exp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                exp:
+                  type: integer
+      responses:
+        '200':
+          description: Updated exp
+
+  /api/users/{userid}/level/set:
+    post:
+      summary: Set user level
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                level:
+                  type: integer
+      responses:
+        '200':
+          description: Updated level
+
+  /api/users/{userid}/emmissions:
+    get:
+      summary: Get user emissions
+      description: Calculate emissions from all orders of the user (example: sum weights * 2)
+      parameters:
+        - in: path
+          name: userid
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Total emissions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalEmmissions:
+                    type: number
+
+  /api/users/{userid}/emmissions/{orderid}:
+    get:
+      summary: Get emissions for a specific order of a user
+      parameters:
+        - in: path
+          name: userid
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: orderid
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Emissions for order
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalEmmissions:
+                    type: number
+
+  /api/carts:
+    post:
+      summary: Create cart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+      responses:
+        '201':
+          description: Created cart
+
+  /api/carts/{cartId}:
+    parameters:
+      - in: path
+        name: cartId
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Get cart (includes items)
+      responses:
+        '200':
+          description: Cart with items
+    delete:
+      summary: Clear cart
+      responses:
+        '200':
+          description: Cart cleared
+
+  /api/carts/{cartId}/items:
+    post:
+      summary: Add item to cart
+      parameters:
+        - in: path
+          name: cartId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                itemId:
+                  type: integer
+      responses:
+        '200':
+          description: Updated cart
+
+  /api/carts/{cartId}/items/{itemId}:
+    delete:
+      summary: Remove item from cart
+      parameters:
+        - in: path
+          name: cartId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: itemId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Updated cart
+
+  /api/orders/from-cart/{cartId}:
+    post:
+      summary: Create order from cart
+      parameters:
+        - in: path
+          name: cartId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          description: Created order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+
+  /api/orders/{orderId}:
+    get:
+      summary: Get single order
+      parameters:
+        - in: path
+          name: orderId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+
+  /api/orders/user/{userId}:
+    get:
+      summary: Get orders for a user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Array of orders
+
+  /api/orders/user/{userId}/items:
+    get:
+      summary: Get items belonging to orders of a user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Array of items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+
+  /api/orders:
+    get:
+      summary: List orders (optional filter by ?userId=)
+      parameters:
+        - in: query
+          name: userId
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Array of orders
+
+  /api/inventory/{inventoryId}:
+    parameters:
+      - in: path
+        name: inventoryId
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Get inventory (includes items)
+      responses:
+        '200':
+          description: Inventory
+
+  /api/inventory/{inventoryId}/items:
+    post:
+      summary: Add item to inventory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                itemId:
+                  type: integer
+      responses:
+        '200':
+          description: Updated inventory
+
+  /api/inventory/{inventoryId}/items/{itemId}:
+    delete:
+      summary: Remove item from inventory
+      parameters:
+        - in: path
+          name: inventoryId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: itemId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Updated inventory
+
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        weight:
+          type: number
+        price:
+          type: number
+        icon:
+          type: string
+        pictures:
+          type: array
+          items:
+            type: string
+        category:
+          type: string
+        order_id:
+          type: integer
+        listedbyid:
+          type: integer
+
+    ItemsPage:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        meta:
+          type: object
+          properties:
+            total:
+              type: integer
+            page:
+              type: integer
+            limit:
+              type: integer
+            pages:
+              type: integer
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        email:
+          type: string
+        verified:
+          type: boolean
+        coins:
+          type: integer
+        level:
+          type: integer
+        exp:
+          type: integer
+        role:
+          type: string
+
+    UserCreate:
+      type: object
+      required: [username, email, password]
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        birthday:
+          type: string
+          format: date
+
+    UserUpdate:
+      type: object
+      properties:
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        password:
+          type: string
+
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+        timestamp:
+          type: string
+          format: date-time
+        user_id:
+          type: integer
+        Items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
