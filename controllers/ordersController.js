@@ -145,13 +145,16 @@ export async function listOrders(req, res) {
 export async function getItemsByUser(req, res) {
   try {
     const { userId } = req.params;
-    const orders = await Order.findAll({ where: { user_id: userId }, include: [{ model: Item }], order: [['timestamp','DESC']] });
-    const items = [];
-    for (const order of orders) {
-      for (const item of order.Items) {
-        items.push(item);
-      }
+    // 1) Get order ids for the user
+    const orders = await Order.findAll({ where: { user_id: userId }, attributes: ['id'], order: [['timestamp','DESC']] });
+    const orderIds = (orders || []).map(o => o.id).filter(id => id !== undefined && id !== null);
+
+    if (orderIds.length === 0) {
+      return res.status(200).json([]);
     }
+
+    // 2) Find all items that reference one of these orders (items.order_id IN (orderIds))
+    const items = await Item.findAll({ where: { order_id: orderIds } });
     res.status(200).json(items);
   } catch (err) {
     logger.error('Get items by user error:', err);
