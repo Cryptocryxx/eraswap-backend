@@ -221,9 +221,10 @@ async function addUserExp(req, res) {
 
     const user = await User.findOne({ where: { id: userid } });
     if (!user) return res.status(404).json({ error: 'User not found' });
-
+    console.log(`Adding ${amount} exp to user ${userid} (current exp: ${user.exp})`);
     user.exp += amount;
     user.save();
+    res.status(200).json({ exp: user.exp });
   } catch (err) {
     console.error('Add user exp error:', err);
     res.status(500).json({ error: err.message });
