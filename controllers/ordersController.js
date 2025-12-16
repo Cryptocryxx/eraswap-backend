@@ -155,7 +155,7 @@ export async function getItemsByUser(req, res) {
 
     // 2) Find all items that reference one of these orders (items.order_id IN (orderIds))
     const items = await Item.findAll({ where: { order_id: orderIds } });
-    res.status(200).json(items);
+    res.status(200).json({items: items});
   } catch (err) {
     logger.error('Get items by user error:', err);
     res.status(500).json({ error: err.message });
