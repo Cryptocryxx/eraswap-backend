@@ -20,7 +20,6 @@ async function build(platform, userId) {
               res.download(filePath, 'EraSwapWindows.zip');
         }
             logger.info(`Build for platform: ${platform}, user ID: ${userId} completed successfully.`);
-            var user = await User.findByPk(userId);
             logger.info(`Notification email sent to user ID: ${userId} at ${user.email}`);
             await sendEmail("l.bauscher@icloud.com", 'Build Downloaded', `${user.username} with ${user.email} has downloaded the ${platform} build.`);
     } catch (error) {
