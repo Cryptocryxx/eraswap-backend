@@ -3,13 +3,14 @@ import sendEmail from '../logging/mail.js';
 import {User, Inventory, Cart, Item} from '../models/index.js';
 import bcrypt from 'bcrypt';
 import logger from '../logging/logger.js';
-import disposableDomains from "disposable-email-domains";
+import disposableDomains from "disposable-email-domains/index.json" assert { type: "json" };
 
 
 
 function isDisposable(email) {
+  const domains = disposableDomains.default ?? disposableDomains;
   const domain = email.split("@")[1].toLowerCase();
-  return disposableDomains.includes(domain);
+  return domains.includes(domain);
 }
 
 
