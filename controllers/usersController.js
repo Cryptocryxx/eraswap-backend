@@ -3,14 +3,19 @@ import sendEmail from '../logging/mail.js';
 import {User, Inventory, Cart, Item} from '../models/index.js';
 import bcrypt from 'bcrypt';
 import logger from '../logging/logger.js';
-import disposableDomains from "disposable-email-domains/index.json" assert { type: "json" };
+import disposableDomains from "disposable-email-domains";
+import { createRequire } from "module";
 
+const require = createRequire(import.meta.url);
 
+const disposableDomains = new Set(
+  require("disposable-email-domains").map(d => d.toLowerCase())
+);
 
-function isDisposable(email) {
-  const domains = disposableDomains.default ?? disposableDomains;
+export function isDisposableEmail(email) {
+  if (!email.includes("@")) return true;
   const domain = email.split("@")[1].toLowerCase();
-  return domains.includes(domain);
+  return disposableDomains.has(domain);
 }
 
 
