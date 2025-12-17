@@ -135,7 +135,6 @@ export async function clearCart(req, res) {
 export default {
   createCart,
   getCart,
-  getCartByUser,
   addItemToCart,
   removeItemFromCart,
   clearCart,
