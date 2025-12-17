@@ -444,9 +444,9 @@ async function checkUsernameAvailability(req, res) {
     try {
         const { username } = req.params;
         const user = await User.findOne({ where: { username } });
-        const exist = user;
-        logger.info(`Check username availability for '${username}': ${exist ? 'exists' : 'available'}`);
-        res.status(200).json({ exist });
+        const exists = user;
+        logger.info(`Check username availability for '${username}': ${exists ? 'exists' : 'available'}`);
+        res.status(200).json({ exists });
     } catch (err) {
         console.error('Check username availability error:', err);
         res.status(500).json({ error: err.message });
