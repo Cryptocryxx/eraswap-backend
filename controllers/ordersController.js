@@ -11,16 +11,16 @@ import logger from '../logging/logger.js';
 export async function createOrderFromCart(req, res) {
   const t = await sequelize.transaction();
   try {
-    const { cartId } = req.params;
-    console.log('createOrderFromCart start - cartId=', cartId);
+    const { userid } = req.params;
+    console.log('createOrderFromCart start - userId=', userid);
 
     // 1) load cart
-    const cart = await Cart.findByPk(cartId, { transaction: t });
+    const cart = await Cart.findByPk({ where: { user_id: userid },  transaction: t });
     console.log('Loaded cart:', cart ? cart.toJSON() : null);
     if (!cart) { await t.rollback(); console.log('Rollback - cart not found'); return res.status(404).json({ error: 'Cart not found' }); }
 
     // 2) load cart_items rows explicitly
-    const cartItems = await CartItem.findAll({ where: { cart_id: cartId }, transaction: t });
+    const cartItems = await CartItem.findAll({ where: { cart_id: cart.id }, transaction: t });
     console.log('cartItems rows count =', cartItems.length, 'rows=', cartItems.map(ci => ci.toJSON()));
     if (!cartItems || cartItems.length === 0) { await t.rollback(); console.log('Rollback - cart empty'); return res.status(400).json({ error: 'Cart is empty' }); }
 
@@ -82,7 +82,7 @@ export async function createOrderFromCart(req, res) {
 
     // 6) remove cart_items rows
     try {
-      const del = await CartItem.destroy({ where: { cart_id: cartId }, transaction: t });
+      const del = await CartItem.destroy({ where: { cart_id: cart.id }, transaction: t });
       console.log('Deleted cart_items rows:', del);
     } catch (err) {
       console.error('Failed to delete cart_items rows:', err && err.message ? err.message : err);

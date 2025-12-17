@@ -7,7 +7,7 @@ const router = express.Router();
 router.use(logMiddleware);
 
 // Create order from cart
-router.post('/from-cart/:cartId', ordersController.createOrderFromCart);
+router.post('/from-cart/:userid', ordersController.createOrderFromCart);
 
 // Get single order
 router.get('/:orderId', ordersController.getOrder);
