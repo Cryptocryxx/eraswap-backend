@@ -10,7 +10,7 @@ router.use(logMiddleware);
 router.post('/', cartsController.createCart);
 
 // Cart operations
-router.get('/:cartId', cartsController.getCart);
+router.get('/:userid', cartsController.getCart);
 
 // Get Total Price of Cart
 router.get('/:cartId/total-price', cartsController.getCartTotalPrice);

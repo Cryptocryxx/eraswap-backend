@@ -29,14 +29,12 @@ export async function createCart(req, res) {
  */
 export async function getCart(req, res) {
   try {
-    const { cartId } = req.params;
-    const cart = await Cart.findByPk(cartId, {
-      include: [{ model: Item }],
-    });
+    const { userid } = req.params;
+    const cart = await Cart.findOne({ where: { user_id: userid }, include: [{ model: Item }] });
     if (!cart) return res.status(404).json({ error: 'Cart not found' });
     res.status(200).json(cart);
   } catch (err) {
-    logger.error('Get cart error:', err);
+    logger.error('Get cart by user error:', err);
     res.status(500).json({ error: err.message });
   }
 }
@@ -137,6 +135,7 @@ export async function clearCart(req, res) {
 export default {
   createCart,
   getCart,
+  getCartByUser,
   addItemToCart,
   removeItemFromCart,
   clearCart,
