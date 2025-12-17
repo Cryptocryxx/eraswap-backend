@@ -13,15 +13,15 @@ router.post('/', cartsController.createCart);
 router.get('/:userid', cartsController.getCart);
 
 // Get Total Price of Cart
-router.get('/:cartId/total-price', cartsController.getCartTotalPrice);
+router.get('/:userid/total-price', cartsController.getCartTotalPrice);
 
 // Add item to cart
-router.post('/:cartId/items', cartsController.addItemToCart);
+router.post('/:userid/items', cartsController.addItemToCart);
 
 // Remove item from cart
-router.delete('/:cartId/items/:itemId', cartsController.removeItemFromCart);
+router.delete('/:userid/items/:itemId', cartsController.removeItemFromCart);
 
 // Clear cart
-router.delete('/:cartId', cartsController.clearCart);
+router.delete('/:userid', cartsController.clearCart);
 
 export default router;
