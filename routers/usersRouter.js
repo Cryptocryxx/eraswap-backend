@@ -14,6 +14,7 @@ router.post("/login", usersController.loginUser);
 
 router.get("/profile/:userid", usersController.getUserProfile);
 router.get("/listings/:userid", usersController.getUserListings);
+router.get("/check-username/:username", usersController.checkUsernameAvailability);
 
 router.put("/profile/:userid", usersController.updateUserProfile);
 

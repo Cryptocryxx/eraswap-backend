@@ -439,6 +439,17 @@ async function getOrderEmmissions(req, res) {
     }
 }
 
+async function checkUsernameAvailability(req, res) {
+    try {
+        const { username } = req.params;
+        const user = await User.findOne({ where: { username } });
+        const exist = !user;
+        res.status(200).json({ exist });
+    } catch (err) {
+        console.error('Check username availability error:', err);
+        res.status(500).json({ error: err.message });
+    }
+}
 
 
 export default {
@@ -456,5 +467,6 @@ export default {
     setUserExp,
     setUserLevel,
     getUserEmmissions,
-    getOrderEmmissions
+    getOrderEmmissions,
+    checkUsernameAvailability
 };
