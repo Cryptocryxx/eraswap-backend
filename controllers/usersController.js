@@ -2,6 +2,7 @@ import { verify } from 'crypto';
 import sendEmail from '../logging/mail.js';
 import {User, Inventory, Cart, Item} from '../models/index.js';
 import bcrypt from 'bcrypt';
+import logger from '../logging/logger.js';
 
 // Registrierung
 async function registerUser(req, res) {
@@ -444,6 +445,7 @@ async function checkUsernameAvailability(req, res) {
         const { username } = req.params;
         const user = await User.findOne({ where: { username } });
         const exist = user;
+        logger.info(`Check username availability for '${username}': ${exist ? 'exists' : 'available'}`);
         res.status(200).json({ exist });
     } catch (err) {
         console.error('Check username availability error:', err);
