@@ -27,7 +27,7 @@ async function registerUser(req, res) {
       return  res.status(408).json({ error: 'Email is already registered' });
     }
 
-    if (isDisposable(req.body.email)) {
+    if (isDisposableEmail(req.body.email)) {
       return res.status(410).json({ error: 'Disposable email addresses are not allowed' });
     }
 
