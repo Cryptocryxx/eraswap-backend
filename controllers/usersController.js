@@ -3,7 +3,6 @@ import sendEmail from '../logging/mail.js';
 import {User, Inventory, Cart, Item} from '../models/index.js';
 import bcrypt from 'bcrypt';
 import logger from '../logging/logger.js';
-import disposableDomains from "disposable-email-domains";
 import { createRequire } from "module";
 
 const require = createRequire(import.meta.url);
