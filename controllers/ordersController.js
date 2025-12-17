@@ -15,7 +15,8 @@ export async function createOrderFromCart(req, res) {
     console.log('createOrderFromCart start - userId=', userid);
 
     // 1) load cart
-    const cart = await Cart.findByPk({ where: { user_id: userid },  transaction: t });
+    // findByPk expects a primary key value — use findOne when querying by user_id
+    const cart = await Cart.findOne({ where: { user_id: userid }, transaction: t });
     console.log('Loaded cart:', cart ? cart.toJSON() : null);
     if (!cart) { await t.rollback(); console.log('Rollback - cart not found'); return res.status(404).json({ error: 'Cart not found' }); }
 
