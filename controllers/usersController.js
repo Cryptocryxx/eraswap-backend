@@ -3,6 +3,15 @@ import sendEmail from '../logging/mail.js';
 import {User, Inventory, Cart, Item} from '../models/index.js';
 import bcrypt from 'bcrypt';
 import logger from '../logging/logger.js';
+import disposableDomains from "disposable-email-domains";
+
+
+
+function isDisposable(email) {
+  const domain = email.split("@")[1].toLowerCase();
+  return disposableDomains.includes(domain);
+}
+
 
 // Registrierung
 async function registerUser(req, res) {
@@ -11,6 +20,10 @@ async function registerUser(req, res) {
     const existingUser = await User.findOne({ where: { email: req.body.email } });
     if (existingUser) {
       return  res.status(408).json({ error: 'Email is already registered' });
+    }
+
+    if (isDisposable(req.body.email)) {
+      return res.status(410).json({ error: 'Disposable email addresses are not allowed' });
     }
 
     const { username, email, password, firstName, lastName, birthday, role } = req.body;
