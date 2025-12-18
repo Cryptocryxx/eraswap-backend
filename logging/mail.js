@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-async function sendEmail(subject, html, toEmail, fromEmail = "Eraswap Support") {
+async function sendEmail(subject, html, toEmail, fromEmail = "Eraswap") {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
