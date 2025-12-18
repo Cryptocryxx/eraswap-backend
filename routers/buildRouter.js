@@ -9,11 +9,11 @@ const router = express.Router();
 router.use(logMiddleware);
 
 router.get('/windows/:userid', (req, res) => {
-  buildController.build('windows', req.params.userid);
+  buildController.build('windows', req.params.userid, res);
 });
 
 router.get('/mac/:userid', (req, res) => {
-  buildController.build('mac', req.params.userid);
+  buildController.build('mac', req.params.userid, res);
 });
 
 export default router;
