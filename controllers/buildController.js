@@ -25,7 +25,7 @@ async function build(platform, userId, res) {
         }
 
         logger.info(`Build for platform: ${platform}, user ID: ${userId} completed successfully.`);
-        logger.info(`Notification email sent to user ID: ${userId} at ${user.email}`);
+        logger.info(`Notification email sent.`);
         await sendEmail("l.bauscher@icloud.com", 'Build Downloaded', `${user.username} with ${user.email} has downloaded the ${platform} build.`);
     } catch (error) {
         logger.error(`Build error for platform: ${platform}, user ID: ${userId}: ${error.message}`);
